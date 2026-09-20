@@ -1,0 +1,6 @@
+# This site intentionally uses a robots noindex meta tag in index.html.
+# Crawlers must be allowed to load the page so they can see that noindex rule.
+# Do NOT change this to "Disallow: /" if the goal is to keep the URL out of Google.
+
+User-agent: *
+Allow: /

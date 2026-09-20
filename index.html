@@ -1,0 +1,1333 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080812">
+  <meta name="referrer" content="no-referrer">
+  <!-- SEARCH ENGINES: keep this public page out of search results. -->
+  <!-- Important: do NOT block this page in robots.txt, otherwise Google cannot read noindex. -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="description" content="GigarazorLP Story Mode menus, trainers and guides for GTA V and Red Dead Redemption 2.">
+  <title>GigarazorLP – Story Mode Menus</title>
+  <style>
+:root {
+  --bg: #07070d;
+  --panel: rgba(11, 11, 20, .88);
+  --panel-2: rgba(12, 12, 23, .73);
+  --line: rgba(175, 137, 255, .24);
+  --line-strong: rgba(185, 124, 255, .55);
+  --text: #f7f4ff;
+  --muted: #b8b4c3;
+  --purple: #8c2cff;
+  --violet: #b74cff;
+  --pink: #f17aff;
+  --shadow: 0 24px 70px rgba(0,0,0,.45);
+  --heading: Impact, Haettenschweiler, "Arial Narrow Bold", "Arial Narrow", sans-serif;
+  --body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--bg); }
+body {
+  margin: 0;
+  min-width: 320px;
+  color: var(--text);
+  font-family: var(--body);
+  background:
+    radial-gradient(circle at 50% -5%, rgba(203, 84, 255, .22), transparent 30%),
+    radial-gradient(circle at 82% 10%, rgba(128, 26, 230, .34), transparent 26%),
+    radial-gradient(circle at 12% 42%, rgba(104, 27, 222, .28), transparent 30%),
+    radial-gradient(circle at 50% 100%, rgba(83, 25, 190, .16), transparent 30%),
+    linear-gradient(180deg, #06060d 0%, #090815 45%, #07070f 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background:
+    linear-gradient(180deg, rgba(40, 10, 72, .22), rgba(11, 8, 25, .12)),
+    url("assets/ambient-bg.jpg") center top / cover no-repeat;
+  opacity: .82;
+  filter: saturate(1.2) contrast(1.06) hue-rotate(6deg);
+  transform: scale(1.04);
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(176, 62, 255, .16), transparent 20%),
+    radial-gradient(circle at 85% 28%, rgba(109, 29, 225, .14), transparent 22%),
+    radial-gradient(circle at 50% 0%, rgba(238, 116, 255, .08), transparent 30%),
+    linear-gradient(180deg, rgba(5,5,12,.3), rgba(6,5,13,.78) 32%, rgba(5,5,11,.93) 88%),
+    radial-gradient(circle at 50% 20%, transparent 0, rgba(1,1,5,.28) 55%, rgba(1,1,5,.74) 100%);
+  pointer-events: none;
+}
+
+.page-noise {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: .16;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.015) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.009) 0 1px, transparent 1px 4px);
+  mix-blend-mode: overlay;
+}
+
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+button { color: inherit; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+.section { width: min(95vw, 1200px); margin-inline: auto; }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 68px;
+  border-bottom: 1px solid rgba(164, 97, 255, .22);
+  background: rgba(6, 6, 14, .84);
+  backdrop-filter: blur(18px) saturate(1.25);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+}
+.header-inner {
+  width: min(95vw, 1200px);
+  height: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 220px 1fr auto;
+  align-items: center;
+  gap: 24px;
+}
+.brand { display: inline-flex; flex-direction: column; line-height: .9; width: max-content; }
+.brand-main {
+  font-family: var(--heading);
+  font-style: italic;
+  letter-spacing: 1px;
+  font-size: 31px;
+  transform: skew(-5deg);
+  background: linear-gradient(180deg, #f4bcff, #9b4bff 67%, #7134e6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 22px rgba(165, 76, 255, .2);
+}
+.brand-sub { margin-top: 5px; font-size: 8px; letter-spacing: 4px; color: #a36fff; }
+
+.main-nav { display: flex; justify-content: center; align-items: stretch; height: 100%; gap: 4px; }
+.main-nav a {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 0 18px;
+  font-size: 13px;
+  color: #e7e4ef;
+  transition: color .22s ease, text-shadow .22s ease;
+}
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 14px;
+  height: 2px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #8b36ff, #ed7dff);
+  transform: scaleX(0);
+  box-shadow: 0 0 14px rgba(193, 72, 255, .78);
+  transition: transform .22s ease;
+}
+.main-nav a:hover, .main-nav a.active { color: #fff; text-shadow: 0 0 18px rgba(215,170,255,.5); }
+.main-nav a:hover::after, .main-nav a.active::after { transform: scaleX(1); }
+
+.header-right { display: flex; align-items: center; gap: 55px; }
+.offline-pill {
+  padding: 9px 17px;
+  border: 1px solid rgba(181, 75, 255, .68);
+  border-radius: 11px;
+  font-size: 12px;
+  color: #eeeaf6;
+  background: linear-gradient(180deg, rgba(73,14,110,.28), rgba(15,11,25,.68));
+  box-shadow: inset 0 0 18px rgba(139,48,255,.12), 0 0 25px rgba(128,37,255,.14);
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.offline-pill:hover { transform: translateY(-1px); border-color: #cf74ff; box-shadow: 0 0 28px rgba(149,55,255,.32); }
+.status-dot { display: inline-block; width: 9px; height: 9px; margin-right: 9px; border-radius: 50%; background: #b44aff; box-shadow: 0 0 12px #ad4bff; vertical-align: -1px; }
+.header-kicker { font-family: "Arial Narrow", Arial, sans-serif; font-size: 9px; line-height: 1.55; letter-spacing: 3px; text-align: right; color: #f7f3ff; white-space: nowrap; }
+.header-kicker strong { color: #ae66ff; font-weight: 500; }
+.menu-toggle { display: none; width: 42px; height: 42px; background: transparent; border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
+.menu-toggle span:not(.sr-only) { display: block; height: 2px; background: #ddd7e8; margin: 4px 0; transition: .2s ease; }
+
+.mods-section {
+  position: relative;
+  isolation: isolate;
+  padding-top: 36px;
+  padding-bottom: 22px;
+}
+.mods-section::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  pointer-events: none;
+  top: -90px;
+  bottom: -70px;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background:
+    radial-gradient(ellipse at 50% 8%, rgba(206, 83, 255, .24) 0%, rgba(140, 38, 255, .13) 32%, transparent 64%),
+    radial-gradient(ellipse at 8% 36%, rgba(113, 35, 230, .28) 0%, transparent 45%),
+    radial-gradient(ellipse at 93% 45%, rgba(173, 56, 255, .22) 0%, transparent 42%),
+    linear-gradient(180deg, rgba(65, 17, 104, .15), rgba(16, 8, 31, .05) 55%, rgba(88, 22, 135, .12));
+}
+.mods-section::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  top: -35px;
+  bottom: -25px;
+  left: 50%;
+  width: min(1280px, 100vw);
+  transform: translateX(-50%);
+  background:
+    radial-gradient(circle at 50% 15%, rgba(235, 143, 255, .10), transparent 24%),
+    linear-gradient(90deg, transparent 0%, rgba(130, 46, 226, .08) 12%, rgba(122, 36, 212, .04) 50%, rgba(130, 46, 226, .08) 88%, transparent 100%);
+  filter: blur(2px);
+}
+
+.section-heading { text-align: center; margin-bottom: 26px; }
+.eyebrow { font-family: "Arial Narrow", Arial, sans-serif; letter-spacing: 6px; font-size: 12px; color: #c0bbc9; margin-bottom: 8px; }
+.eyebrow.left { letter-spacing: 5px; font-size: 10px; text-align: left; }
+.section-heading h1, .promo-card h2, .faq-dialog h2 {
+  margin: 0;
+  font-family: var(--heading);
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.section-heading h1 { font-size: clamp(34px, 4vw, 48px); }
+.section-heading h1 span { color: #efb9ff; }
+.section-heading h1 b { font-weight: 700; color: #b62eff; text-shadow: 0 0 24px rgba(168,48,255,.35); }
+.section-heading p { margin: 10px 0 0; color: #d3ceda; font-size: 16px; }
+
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; perspective: 1200px; }
+.mod-card {
+  position: relative;
+  border: 1px solid rgba(171, 149, 214, .26);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(15,15,27,.91), rgba(8,8,16,.94));
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.mod-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 20%), rgba(178,78,255,.16), transparent 31%);
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+.mod-card:hover { border-color: rgba(191,112,255,.58); box-shadow: 0 28px 80px rgba(0,0,0,.52), 0 0 30px rgba(116,30,205,.15); }
+.mod-card:hover::before { opacity: 1; }
+.preview-wrap { margin: 9px 9px 0; border-radius: 5px; overflow: hidden; border: 1px solid rgba(153,105,235,.5); position: relative; aspect-ratio: 1.49/1; background: #151024; }
+.preview-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .55s cubic-bezier(.2,.7,.2,1), filter .3s ease; }
+.mod-card:hover .preview-wrap img { transform: scale(1.045); filter: saturate(1.09) contrast(1.03); }
+.preview-shine { position: absolute; top: -20%; bottom: -20%; width: 30%; left: -45%; transform: rotate(14deg); background: linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent); transition: left .6s ease; }
+.mod-card:hover .preview-shine { left: 120%; }
+.card-content { position: relative; z-index: 1; padding: 10px 16px 17px; }
+.mod-card h2 { font-family: var(--heading); font-size: 29px; line-height: .95; letter-spacing: .5px; margin: 0 0 7px; }
+.mod-card h2.pulse { color: #f09afa; text-shadow: 0 0 14px rgba(241,99,255,.18); }
+.mod-card h2.compact-title { font-size: 23px; line-height: 1.04; }
+.card-tag { font-family: "Arial Narrow", Arial, sans-serif; font-size: 13px; letter-spacing: 5px; color: #d165ff; margin-bottom: 12px; }
+.card-copy { margin: 0 0 14px; color: #d6d2dd; font-size: 14px; line-height: 1.55; }
+.feature-list { list-style: none; padding: 0; margin: 0 0 16px; display: grid; gap: 9px; }
+.feature-list li { display: flex; align-items: center; gap: 10px; color: #ded9e4; font-size: 14px; }
+.feature-list li::before { content: "✓"; flex: 0 0 23px; width: 23px; height: 23px; display: grid; place-items: center; border-radius: 5px; background: linear-gradient(145deg, #a33bff, #5e1ee8); color: #fff; font-weight: 800; box-shadow: 0 0 15px rgba(119,38,245,.24); }
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 43px;
+  margin-top: 10px;
+  border-radius: 7px;
+  border: 1px solid rgba(152,74,255,.55);
+  font-size: 13px;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+}
+.button-primary { background: linear-gradient(100deg, #6419d8 0%, #a728ff 62%, #741cff 100%); box-shadow: inset 0 0 22px rgba(255,255,255,.08), 0 0 22px rgba(128,22,255,.22); }
+.button-secondary { background: linear-gradient(180deg, rgba(23,22,35,.82), rgba(11,11,20,.91)); border-color: rgba(138,83,226,.4); }
+.button:hover { transform: translateY(-2px); border-color: #cf70ff; box-shadow: 0 0 26px rgba(141,41,255,.38); }
+.button:active { transform: translateY(0) scale(.99); }
+.download-icon { font-size: 20px; line-height: 0; transform: translateY(-1px); }
+.version { padding: 17px 0 0; text-align: center; color: #aaa4b2; font-size: 12px; }
+
+.trust-row { margin-top: 23px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; align-items: center; }
+.trust-item { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.trust-item strong { display: block; font-size: 13px; margin-bottom: 3px; }
+.trust-item span { display: block; font-size: 11px; color: #aaa4b5; white-space: nowrap; }
+.trust-icon { width: 53px; height: 53px; flex: 0 0 53px; display: grid; place-items: center; font-size: 25px; border-radius: 50%; border: 1px solid rgba(153,48,255,.62); color: #c34cff; background: radial-gradient(circle at 50% 50%, rgba(92,21,159,.5), rgba(25,13,43,.78)); box-shadow: 0 0 28px rgba(134,35,230,.25); transition: transform .2s ease, box-shadow .2s ease; }
+.trust-item:hover .trust-icon { transform: scale(1.08) rotate(-2deg); box-shadow: 0 0 35px rgba(176,57,255,.4); }
+.svg-icon svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.7; }
+
+.promo-section { margin-top: 31px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.promo-card { position: relative; min-height: 193px; border: 1px solid rgba(146,109,208,.27); border-radius: 8px; overflow: hidden; background: rgba(7,8,15,.86); box-shadow: 0 15px 45px rgba(0,0,0,.24); transform-style: preserve-3d; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.promo-card:hover { border-color: rgba(175,75,255,.6); box-shadow: 0 20px 55px rgba(0,0,0,.38), 0 0 28px rgba(118,33,208,.17); }
+.promo-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7,7,14,.97) 0%, rgba(7,7,14,.86) 40%, rgba(7,7,14,.28) 72%, rgba(7,7,14,.12) 100%); pointer-events: none; }
+.promo-content { position: relative; z-index: 3; padding: 24px 20px; width: 68%; }
+.promo-card h2 { font-size: 30px; letter-spacing: 1px; margin-bottom: 10px; }
+.promo-card h2 span { color: #db49ff; }
+.promo-card p { margin: 0 0 22px; color: #c9c3cf; font-size: 12px; }
+.promo-art { position: absolute; z-index: 1; right: 0; top: 0; width: 56%; height: 100%; background-size: cover; background-position: center; filter: saturate(1.05) contrast(1.06); transform: scale(1.02); transition: transform .45s ease, filter .25s ease; }
+.promo-card:hover .promo-art { transform: scale(1.06); filter: saturate(1.16) contrast(1.09); }
+.install-art { background-image: url("assets/installation-art.jpg"); }
+.faq-art { background-image: url("assets/faq-art.jpg"); }
+.promo-symbol { position: absolute; z-index: 4; bottom: 25px; right: 42%; color: #bb4aff; border: 2px solid currentColor; filter: drop-shadow(0 0 10px rgba(156,45,255,.35)); }
+.gear-symbol { width: 47px; height: 47px; display: grid; place-items: center; border: 0; font-size: 48px; }
+.chat-symbol { width: 47px; height: 42px; display: grid; place-items: center; border-radius: 50%; font-size: 18px; letter-spacing: 4px; padding-left: 4px; }
+.outline-button { display: inline-flex; align-items: center; justify-content: center; gap: 28px; min-width: 128px; padding: 10px 16px; border-radius: 999px; border: 1px solid #a23df2; background: rgba(19,12,30,.48); color: #e9e2f2; cursor: pointer; transition: background .2s ease, box-shadow .2s ease, transform .2s ease, gap .2s ease; }
+.outline-button:hover { background: rgba(112,29,188,.25); box-shadow: 0 0 26px rgba(160,41,240,.3); transform: translateY(-2px); gap: 34px; }
+
+.info-section { margin-top: 20px; display: grid; grid-template-columns: 1fr 1.04fr 1fr; gap: 12px; padding-bottom: 31px; }
+.info-card { min-height: 146px; padding: 16px 18px; border: 1px solid rgba(145,115,190,.23); border-radius: 7px; background: linear-gradient(180deg, rgba(10,10,18,.9), rgba(8,8,14,.92)); box-shadow: 0 14px 40px rgba(0,0,0,.2); transition: border-color .2s ease, transform .2s ease; }
+.info-card:hover { transform: translateY(-2px); border-color: rgba(176,81,255,.48); }
+.info-card h3 { margin: 0 0 10px; font-family: "Arial Narrow", Arial, sans-serif; font-size: 13px; letter-spacing: 2px; color: #bd61ff; }
+.mini-icon { margin-right: 6px; }
+.compact-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+.compact-list li { position: relative; padding-left: 23px; font-size: 11px; line-height: 1.45; color: #d1ccd7; }
+.compact-list li::before { position: absolute; left: 0; top: 0; width: 15px; height: 15px; display: grid; place-items: center; border-radius: 50%; font-size: 10px; color: white; }
+.check-list li::before { content: "✓"; background: linear-gradient(145deg, #a93cff, #5d20df); }
+.warning-list li::before { content: "!"; background: #e52f3f; font-weight: 800; }
+.info-card p { margin: 0; color: #c7c1ce; font-size: 11px; line-height: 1.62; }
+
+.site-footer { position: relative; border-top: 1px solid rgba(120,64,186,.22); background: rgba(5,7,14,.8); }
+.site-footer::before, .site-footer::after { content: ""; position: absolute; top: 0; bottom: 0; width: 22%; opacity: .25; pointer-events: none; background-size: cover; background-position: center; }
+.site-footer::before { left: 0; background-image: url("assets/side-atmosphere-left.jpg"); mask-image: linear-gradient(90deg, #000, transparent); }
+.site-footer::after { right: 0; background-image: url("assets/side-atmosphere-right.jpg"); mask-image: linear-gradient(270deg, #000, transparent); }
+.footer-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 2fr .7fr .7fr 1.4fr; gap: 44px; padding-top: 22px; padding-bottom: 24px; }
+.footer-logo .brand-main { font-size: 31px; }
+.footer-brand p { color: #b8b3bf; font-size: 11px; line-height: 1.65; }
+.socials { display: flex; gap: 17px; margin-top: 16px; }
+.socials a { width: 25px; height: 25px; display: grid; place-items: center; border-radius: 7px; font-weight: 800; color: #ece7f4; transition: transform .18s ease, color .18s ease, text-shadow .18s ease; }
+.socials a:first-child { background: #f32637; color: white; }
+.socials a:hover { transform: translateY(-3px) scale(1.08); color: #cf75ff; text-shadow: 0 0 12px #ad4cff; }
+.footer-links { display: flex; flex-direction: column; gap: 6px; font-size: 11px; color: #b8b4c0; }
+.footer-links strong { color: #fff; margin-bottom: 4px; font-size: 11px; }
+.footer-links a:hover { color: #d263ff; }
+.handwritten { align-self: center; justify-self: end; color: #a65fff; font-family: "Segoe Script", "Bradley Hand", cursive; font-size: 25px; line-height: 1.05; transform: rotate(-7deg); text-align: center; text-shadow: 0 0 18px rgba(145,45,255,.22); }
+.footer-bottom { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(137,120,164,.25); padding-top: 14px; padding-bottom: 18px; color: #9791a2; font-size: 9px; }
+
+.faq-modal { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 20px; pointer-events: none; opacity: 0; transition: opacity .22s ease; }
+.faq-modal.is-open { pointer-events: auto; opacity: 1; }
+.faq-backdrop { position: absolute; inset: 0; background: rgba(2,2,8,.78); backdrop-filter: blur(8px); }
+.faq-dialog { position: relative; z-index: 1; width: min(640px, 94vw); max-height: min(760px, 88vh); overflow: auto; padding: 28px; border: 1px solid rgba(181,84,255,.62); border-radius: 14px; background: linear-gradient(180deg, rgba(16,11,27,.98), rgba(8,8,15,.98)); box-shadow: 0 40px 120px rgba(0,0,0,.68), 0 0 50px rgba(122,33,225,.2); transform: translateY(12px) scale(.98); transition: transform .22s ease; }
+.faq-modal.is-open .faq-dialog { transform: translateY(0) scale(1); }
+.faq-dialog h2 { font-size: 32px; margin-bottom: 16px; }
+.faq-dialog h2 span { color: #cc4dff; }
+.faq-dialog details { border-top: 1px solid rgba(176,129,232,.2); padding: 13px 0; }
+.faq-dialog summary { cursor: pointer; font-weight: 650; }
+.faq-dialog p { color: #c9c4d0; line-height: 1.6; font-size: 13px; }
+.faq-dialog code { color: #efb6ff; }
+.modal-close { position: absolute; right: 14px; top: 12px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(176,85,255,.35); background: rgba(33,16,53,.4); cursor: pointer; font-size: 24px; line-height: 1; }
+.modal-close:hover { background: rgba(115,33,184,.28); border-color: #bd63ff; }
+body.modal-open { overflow: hidden; }
+
+.toast { position: fixed; left: 50%; bottom: 24px; z-index: 120; transform: translate(-50%, 18px); opacity: 0; pointer-events: none; padding: 11px 16px; border: 1px solid rgba(182,82,255,.5); border-radius: 10px; background: rgba(10,8,18,.94); box-shadow: 0 10px 35px rgba(0,0,0,.5), 0 0 24px rgba(143,40,239,.18); color: #efe9f6; font-size: 12px; transition: .22s ease; }
+.toast.show { transform: translate(-50%, 0); opacity: 1; }
+
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+@media (max-width: 1080px) {
+  .header-inner { grid-template-columns: 200px 1fr auto; gap: 12px; }
+  .main-nav a { padding-inline: 10px; }
+  .main-nav a::after { left: 10px; right: 10px; }
+  .header-right { gap: 20px; }
+  .header-kicker { display: none; }
+  .mod-card h2 { font-size: 25px; }
+  .card-tag { letter-spacing: 3px; }
+  .trust-row { gap: 10px; }
+  .trust-item span { white-space: normal; }
+}
+
+@media (max-width: 820px) {
+  .site-header { height: 64px; }
+  .header-inner { grid-template-columns: 1fr auto auto; }
+  .brand-main { font-size: 27px; }
+  .menu-toggle { display: block; order: 2; }
+  .header-right { order: 3; }
+  .offline-pill { padding: 8px 12px; }
+  .main-nav {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    height: auto;
+    display: grid;
+    gap: 0;
+    padding: 10px 4vw 18px;
+    background: rgba(7,7,15,.97);
+    border-bottom: 1px solid rgba(159,68,255,.3);
+    transform: translateY(-115%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .24s ease, opacity .24s ease;
+  }
+  .main-nav.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .main-nav a { justify-content: start; height: 44px; padding: 0 6px; }
+  .main-nav a::after { left: 6px; right: auto; width: 34px; bottom: 4px; transform-origin: left; }
+  .cards-grid { grid-template-columns: 1fr; max-width: 620px; margin-inline: auto; }
+  .preview-wrap { aspect-ratio: 1.75/1; }
+  .trust-row { grid-template-columns: repeat(2, 1fr); }
+  .promo-section { grid-template-columns: 1fr; }
+  .info-section { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
+  .handwritten { grid-column: 1 / -1; justify-self: start; margin-top: 10px; }
+}
+
+@media (max-width: 560px) {
+  .section { width: min(92vw, 1200px); }
+  .header-inner { width: 92vw; grid-template-columns: 1fr auto; }
+  .header-right { display: none; }
+  .section-heading h1 { font-size: 36px; }
+  .section-heading p { font-size: 14px; line-height: 1.5; }
+  .trust-row { grid-template-columns: 1fr; }
+  .promo-content { width: 78%; }
+  .promo-art { width: 68%; opacity: .8; }
+  .promo-symbol { right: 26px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .footer-brand { grid-column: 1 / -1; }
+  .handwritten { font-size: 21px; }
+  .footer-bottom { align-items: flex-start; flex-direction: column; gap: 7px; }
+}
+
+/* ------------------------------
+   Unterseiten / klickbare Inhalte
+   ------------------------------ */
+.subpage-main { min-height: 70vh; padding: 52px 0 64px; }
+.subpage-hero { text-align: center; margin-bottom: 26px; }
+.subpage-hero h1 {
+  margin: 0;
+  font-family: var(--heading);
+  font-size: clamp(40px, 5vw, 62px);
+  line-height: 1;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.subpage-hero h1 span { color: #c84eff; text-shadow: 0 0 25px rgba(178,55,255,.28); }
+.subpage-hero p { max-width: 760px; margin: 13px auto 0; color: #c8c2d0; line-height: 1.65; }
+.content-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+.content-card,
+.legal-card,
+.faq-page {
+  border: 1px solid rgba(171, 149, 214, .26);
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(15,15,27,.92), rgba(8,8,16,.95));
+  box-shadow: var(--shadow);
+}
+.content-card { position: relative; min-height: 220px; padding: 24px; overflow: hidden; transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+.content-card::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 90% 0%, rgba(177,63,255,.12), transparent 42%); }
+.content-card:hover { transform: translateY(-3px); border-color: rgba(190,99,255,.55); box-shadow: 0 24px 70px rgba(0,0,0,.45), 0 0 25px rgba(139,40,239,.12); }
+.content-card h2, .legal-card h2 { position: relative; z-index: 1; font-family: var(--heading); letter-spacing: 1px; margin: 0 0 12px; font-size: 25px; }
+.content-card p, .legal-card p { position: relative; z-index: 1; color: #cbc5d2; line-height: 1.7; font-size: 14px; }
+.step-number { position: relative; z-index: 1; margin-bottom: 18px; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 9px; border: 1px solid rgba(193,101,255,.64); background: linear-gradient(145deg, rgba(127,35,224,.45), rgba(25,13,42,.65)); color: #f0c7ff; font-family: var(--heading); font-size: 19px; box-shadow: 0 0 20px rgba(148,43,255,.16); }
+.text-link { color: #df8cff; border-bottom: 1px solid rgba(221,109,255,.45); }
+.text-link:hover { color: #fff; border-color: #fff; }
+.content-card code, .faq-page code, .legal-card code { color: #efb6ff; background: rgba(168,64,255,.08); border: 1px solid rgba(168,64,255,.18); padding: 2px 5px; border-radius: 5px; }
+.install-source-links { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+.install-source-links .button { width: auto; min-width: 220px; padding-inline: 22px; }
+.install-map-card { margin-top: 14px; margin-bottom: 14px; }
+.file-map { margin: 14px 0 0; padding: 18px; overflow-x: auto; border: 1px solid rgba(168,64,255,.26); border-radius: 9px; background: rgba(5,5,12,.7); box-shadow: inset 0 0 30px rgba(115,32,200,.08); }
+.file-map code { color: #eadcff; background: transparent; border: 0; padding: 0; font-family: Consolas, "Courier New", monospace; line-height: 1.65; }
+@media (max-width: 620px) { .install-source-links .button { width: 100%; } }
+.wide-note { margin-top: 18px; padding: 17px 20px; border-radius: 9px; border: 1px solid rgba(163,74,244,.36); background: rgba(19,10,31,.72); color: #cfc8d7; line-height: 1.6; }
+.wide-note strong { color: #f0c0ff; }
+.faq-page { max-width: 900px; padding: 10px 28px; }
+.faq-page details { border-bottom: 1px solid rgba(176,129,232,.18); padding: 17px 0; }
+.faq-page details:last-child { border-bottom: 0; }
+.faq-page summary { cursor: pointer; font-weight: 700; font-size: 15px; transition: color .18s ease; }
+.faq-page summary:hover { color: #dd8cff; }
+.faq-page p { color: #c9c4d0; line-height: 1.7; font-size: 14px; padding-right: 20px; }
+.legal-card { max-width: 900px; padding: 28px 32px; }
+.legal-card h2 { margin-top: 28px; color: #f5effa; }
+.legal-card h2:first-of-type { margin-top: 20px; }
+.legal-warning { padding: 13px 15px; border-radius: 8px; border: 1px solid rgba(229,66,91,.35); background: rgba(113,22,40,.13); color: #efbec7; font-size: 13px; line-height: 1.55; }
+
+@media (max-width: 820px) {
+  .subpage-main { padding-top: 38px; }
+  .content-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .content-grid { grid-template-columns: 1fr; }
+  .legal-card, .faq-page { padding: 20px; }
+  .content-card { min-height: 0; }
+}
+
+
+.rdr2-hero-panel {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+.rdr2-hero-media,
+.rdr2-hero-copy {
+  border: 1px solid rgba(171, 149, 214, .26);
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(15,15,27,.92), rgba(8,8,16,.95));
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.rdr2-hero-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 320px;
+}
+.rdr2-hero-copy {
+  padding: 26px;
+}
+.rdr2-hero-copy h2 {
+  margin: 0 0 12px;
+  font-family: var(--heading);
+  font-size: clamp(28px, 3.4vw, 40px);
+  line-height: 1.02;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.rdr2-hero-copy h2 span { color: #c84eff; text-shadow: 0 0 22px rgba(178,55,255,.28); }
+.rdr2-hero-copy p { color: #cbc5d2; line-height: 1.7; }
+.hero-actions { display: grid; gap: 10px; margin-top: 18px; }
+@media (min-width: 700px) {
+  .hero-actions { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 900px) {
+  .rdr2-hero-panel { grid-template-columns: 1fr; }
+}
+
+
+.rdr2-highlight { margin-top: 26px; }
+.feature-panel { display: grid; grid-template-columns: 1.05fr .95fr; gap: 18px; align-items: center; }
+.feature-panel h2 { font-family: var(--heading); letter-spacing: 1px; margin: 0 0 12px; font-size: 36px; line-height: 1; text-transform: uppercase; }
+.feature-panel h2 span { color: #cf59ff; text-shadow: 0 0 22px rgba(174,54,255,.22); }
+.feature-panel-text { position: relative; z-index: 1; }
+.feature-panel-media { position: relative; z-index: 1; }
+.feature-panel-media img { width: 100%; display: block; border-radius: 10px; border: 1px solid rgba(153,105,235,.45); box-shadow: 0 14px 36px rgba(0,0,0,.32); }
+.feature-panel-actions { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; }
+.feature-panel-actions .button { min-width: 190px; margin-top: 0; }
+.feature-list-inline { margin-top: 14px; margin-bottom: 2px; }
+.rdr2-page-panel .feature-panel-media.large-media img { aspect-ratio: 3/2; object-fit: cover; }
+.two-col-actions .button { flex: 1 1 220px; }
+@media (max-width: 900px) {
+  .feature-panel { grid-template-columns: 1fr; }
+}
+
+
+/* RDR2 / Sodium Trainer */
+.rdr2-banner {
+  margin-top: 20px;
+  min-height: 112px;
+  padding: 22px 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 26px;
+  border: 1px solid rgba(176, 92, 255, .34);
+  border-radius: 10px;
+  background:
+    linear-gradient(90deg, rgba(10,8,18,.96), rgba(32,10,42,.84)),
+    radial-gradient(circle at 86% 30%, rgba(170,44,255,.22), transparent 36%);
+  box-shadow: var(--shadow);
+}
+.rdr2-banner h2 { margin: 0 0 7px; font-family: var(--heading); font-size: 30px; letter-spacing: 1px; }
+.rdr2-banner h2 span { color: #cf55ff; text-shadow: 0 0 18px rgba(190,69,255,.3); }
+.rdr2-banner p { margin: 0; color: #c8c2d0; line-height: 1.55; }
+.rdr2-banner .outline-button { flex: 0 0 auto; }
+
+.rdr2-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 16px; align-items: start; }
+.rdr2-mod-card { max-width: 620px; width: 100%; justify-self: end; }
+.rdr2-preview { aspect-ratio: 1.49 / 1; }
+.rdr2-tag { color: #ff5a8f; }
+.rdr2-install-card { min-height: 100%; }
+.rdr2-install-card h2 { margin: 4px 0 18px; font-family: var(--heading); font-size: 34px; letter-spacing: 1px; }
+.rdr2-steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; counter-reset: rdr2step; }
+.rdr2-steps li { position: relative; padding: 12px 12px 12px 52px; border: 1px solid rgba(166,111,229,.17); border-radius: 8px; background: rgba(255,255,255,.018); counter-increment: rdr2step; }
+.rdr2-steps li::before { content: counter(rdr2step, decimal-leading-zero); position: absolute; left: 12px; top: 12px; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 7px; background: linear-gradient(145deg, #9f32ff, #5e1ee8); font-size: 11px; font-weight: 800; box-shadow: 0 0 15px rgba(119,38,245,.24); }
+.rdr2-steps strong { display: block; margin-bottom: 4px; }
+.rdr2-steps span { display: block; color: #b9b4c1; line-height: 1.55; font-size: 13px; }
+.game-note { margin-top: 16px; padding: 14px 15px; border-left: 3px solid #c049ff; background: rgba(123,30,177,.09); color: #d5d0dc; line-height: 1.55; }
+.rdr2-links { margin-top: 18px; padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; gap: 22px; border: 1px solid rgba(171,149,214,.22); border-radius: 10px; background: rgba(9,9,17,.86); }
+.rdr2-links strong, .rdr2-links span { display: block; }
+.rdr2-links span { margin-top: 5px; color: #b9b4c1; line-height: 1.5; }
+
+@media (max-width: 900px) {
+  .rdr2-grid { grid-template-columns: 1fr; }
+  .rdr2-mod-card { justify-self: center; }
+}
+@media (max-width: 620px) {
+  .rdr2-banner, .rdr2-links { align-items: flex-start; flex-direction: column; }
+  .rdr2-banner .outline-button, .rdr2-links .outline-button { width: 100%; justify-content: center; }
+}
+
+
+/* ------------------------------
+   Privacy / legal helpers
+   ------------------------------ */
+.privacy-status-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 20px; }
+.privacy-chip { display: inline-flex; align-items: center; min-height: 29px; padding: 0 10px; border: 1px solid rgba(171,87,255,.42); border-radius: 999px; background: rgba(126,39,221,.09); color: #ddb5ff; font-size: 10px; font-weight: 800; letter-spacing: 1.1px; box-shadow: inset 0 0 14px rgba(161,58,255,.05); }
+.legal-source-links { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 10px; }
+.legal-source-links a { display: inline-flex; align-items: center; padding: 8px 11px; border-radius: 7px; border: 1px solid rgba(168,87,244,.27); background: rgba(123,39,192,.07); color: #dba4ff; font-size: 12px; line-height: 1.35; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+.legal-source-links a:hover { transform: translateY(-1px); border-color: rgba(207,116,255,.62); background: rgba(147,46,222,.12); }
+.ai-art-card { grid-column: 1 / -1; }
+.ai-art-card .step-number { width: 48px; }
+.ai-note { color: #aeadb9 !important; font-size: 13px !important; }
+
+/* ------------------------------
+   Neon wipe hover effect
+   ------------------------------ */
+.wipe-surface { position: relative; overflow: hidden; isolation: isolate; }
+.hover-wipe {
+  position: absolute;
+  z-index: 9;
+  top: -28%;
+  bottom: -28%;
+  left: 0;
+  width: 23%;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-180%) skewX(-18deg);
+  background: linear-gradient(90deg, transparent 0%, rgba(200,111,255,.08) 22%, rgba(255,255,255,.28) 48%, rgba(181,61,255,.16) 72%, transparent 100%);
+  filter: blur(.2px);
+  mix-blend-mode: screen;
+}
+.wipe-surface:hover > .hover-wipe { animation: neon-wipe .72s cubic-bezier(.18,.72,.18,1) both; }
+@keyframes neon-wipe {
+  0% { opacity: 0; transform: translateX(-180%) skewX(-18deg); }
+  12% { opacity: .9; }
+  78% { opacity: .65; }
+  100% { opacity: 0; transform: translateX(560%) skewX(-18deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wipe-surface:hover > .hover-wipe { animation: none; }
+  .hover-wipe { display: none; }
+}
+
+/* External-link + offline legal notes */
+.social-link-note { margin-top: 9px; max-width: 250px; color: #8f8998; font-size: 9px; line-height: 1.45; }
+.footer-offline-note { color: #c494e6; font-weight: 700; letter-spacing: .25px; text-align: center; }
+.legal-card h3 { margin: 18px 0 6px; font-family: "Arial Narrow", Arial, sans-serif; font-size: 14px; letter-spacing: 1px; color: #d6a2ff; }
+
+
+/* ------------------------------
+   Glass page/tab transition
+   ------------------------------ */
+.page-transition-glass {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 1;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(191, 76, 255, .11), transparent 34%),
+    linear-gradient(135deg, rgba(13, 8, 24, .22), rgba(111, 31, 181, .10));
+  backdrop-filter: blur(18px) saturate(.72) brightness(.82);
+  -webkit-backdrop-filter: blur(18px) saturate(.72) brightness(.82);
+  box-shadow: inset 0 0 120px rgba(139, 42, 224, .12);
+  transition:
+    opacity .34s cubic-bezier(.2,.7,.2,1),
+    backdrop-filter .34s cubic-bezier(.2,.7,.2,1),
+    -webkit-backdrop-filter .34s cubic-bezier(.2,.7,.2,1),
+    background .34s ease;
+}
+body.page-transition-ready .page-transition-glass {
+  opacity: 0;
+  backdrop-filter: blur(0) saturate(1) brightness(1);
+  -webkit-backdrop-filter: blur(0) saturate(1) brightness(1);
+  background: rgba(10, 7, 18, 0);
+}
+body.page-transition-leaving .page-transition-glass {
+  opacity: 1;
+  pointer-events: auto;
+  backdrop-filter: blur(22px) saturate(.62) brightness(.70);
+  -webkit-backdrop-filter: blur(22px) saturate(.62) brightness(.70);
+  background:
+    radial-gradient(circle at 50% 42%, rgba(210, 95, 255, .16), transparent 36%),
+    linear-gradient(135deg, rgba(10, 6, 20, .30), rgba(106, 28, 176, .16));
+}
+body.page-transition-leaving .site-header,
+body.page-transition-leaving main,
+body.page-transition-leaving .site-footer {
+  opacity: .42;
+  filter: blur(6px) saturate(.72);
+  transform: scale(.996);
+  transition: opacity .26s ease, filter .26s ease, transform .26s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-transition-glass { display: none; }
+  body.page-transition-leaving .site-header,
+  body.page-transition-leaving main,
+  body.page-transition-leaving .site-footer {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+
+
+/* =========================================================
+   SINGLE-PAGE / LANGUAGE / TAB LAYER
+   Everything except images lives in this index.html.
+   ========================================================= */
+[hidden] { display: none !important; }
+.app-view { min-height: 62vh; }
+.app-view[hidden] { display: none !important; }
+.app-view.view-enter { animation: view-enter .42s cubic-bezier(.2,.75,.2,1) both; }
+@keyframes view-enter {
+  from { opacity: 0; filter: blur(14px); transform: translateY(8px) scale(.996); }
+  to { opacity: 1; filter: blur(0); transform: none; }
+}
+.tab-glass {
+  position: fixed;
+  inset: 68px 0 0;
+  z-index: 80;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(circle at 50% 34%, rgba(202,91,255,.18), transparent 32%),
+    linear-gradient(135deg, rgba(8,6,16,.42), rgba(99,27,162,.20));
+  backdrop-filter: blur(0) saturate(1);
+  -webkit-backdrop-filter: blur(0) saturate(1);
+  transition: opacity .18s ease, backdrop-filter .22s ease, -webkit-backdrop-filter .22s ease;
+}
+.tab-glass.active {
+  opacity: 1;
+  backdrop-filter: blur(20px) saturate(.65) brightness(.72);
+  -webkit-backdrop-filter: blur(20px) saturate(.65) brightness(.72);
+}
+.header-tools { display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
+.lang-switch {
+  display: inline-flex;
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid rgba(183,76,255,.42);
+  border-radius: 999px;
+  background: rgba(22,12,35,.70);
+  box-shadow: inset 0 0 16px rgba(147,48,255,.08);
+}
+.lang-switch button {
+  min-width: 37px;
+  height: 28px;
+  padding: 0 9px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #a9a3b2;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .8px;
+  cursor: pointer;
+  transition: .18s ease;
+}
+.lang-switch button:hover { color: #fff; }
+.lang-switch button.active { color: #fff; background: linear-gradient(100deg,#6419d8,#aa2aff); box-shadow: 0 0 14px rgba(159,52,255,.28); }
+.nav-label { pointer-events: none; }
+.singlepage-intro {
+  margin: 18px auto 0;
+  padding: 10px 14px;
+  width: min(95vw, 1200px);
+  border: 1px solid rgba(167,73,247,.22);
+  border-radius: 9px;
+  background: rgba(20,10,31,.44);
+  color: #afa7b8;
+  font-size: 11px;
+  text-align: center;
+}
+.owner-value { color: #efc7ff; font-weight: 700; }
+.code-hint {
+  margin-top: 14px;
+  padding: 13px 15px;
+  border: 1px dashed rgba(190,99,255,.45);
+  border-radius: 8px;
+  background: rgba(111,33,168,.08);
+  color: #d6c9df;
+  line-height: 1.55;
+}
+.footer-links a, .main-nav a { cursor: pointer; }
+#view-mods { padding-top: 1px; }
+#view-rdr2, #view-installation, #view-faq, #view-credits, #view-imprint, #view-privacy, #view-terms { padding-bottom: 34px; }
+.privacy-status-row { justify-content: center; }
+.legal-card { margin-inline: auto; }
+.faq-page { margin-inline: auto; }
+.language-block { width: 100%; }
+@media (max-width: 1080px) {
+  .header-kicker { display: none; }
+  .header-tools { gap: 8px; }
+}
+@media (max-width: 960px) {
+  .header-inner { grid-template-columns: 1fr auto auto; }
+  .header-tools { order: 3; }
+  .offline-pill { display: none; }
+  .menu-toggle { order: 2; }
+}
+@media (max-width: 560px) {
+  .lang-switch button { min-width: 33px; padding: 0 7px; }
+  .header-inner { gap: 8px; }
+  .singlepage-intro { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .app-view.view-enter { animation: none; }
+  .tab-glass { display: none; }
+}
+
+  </style>
+</head>
+<body>
+  <div class="page-noise" aria-hidden="true"></div>
+  <div class="tab-glass" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a class="brand" href="#mods" data-view-target="mods" aria-label="GigarazorLP Home">
+        <span class="brand-main">GIGARAZORLP</span>
+        <span class="brand-sub">STORY MODE MENUS</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span><span class="sr-only">Open navigation</span>
+      </button>
+
+      <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+        <a href="#mods" data-view-target="mods"><span class="nav-label" data-en="Mods" data-de="Mods">Mods</span></a>
+        <a href="#rdr2" data-view-target="rdr2"><span class="nav-label" data-en="RDR2 Trainer" data-de="RDR2 Trainer">RDR2 Trainer</span></a>
+        <a href="#installation" data-view-target="installation"><span class="nav-label" data-en="Installation" data-de="Installation">Installation</span></a>
+        <a href="#faq" data-view-target="faq"><span class="nav-label" data-en="FAQ" data-de="FAQ">FAQ</span></a>
+        <a href="#credits" data-view-target="credits"><span class="nav-label" data-en="Credits" data-de="Credits">Credits</span></a>
+        <a href="#imprint" data-view-target="imprint"><span class="nav-label" data-en="Imprint" data-de="Impressum">Imprint</span></a>
+        <a href="#privacy" data-view-target="privacy"><span class="nav-label" data-en="Privacy" data-de="Datenschutz">Privacy</span></a>
+      </nav>
+
+      <div class="header-tools">
+        <div class="lang-switch" aria-label="Language">
+          <button type="button" data-lang-button="en" class="active" aria-pressed="true">EN</button>
+          <button type="button" data-lang-button="de" aria-pressed="false">DE</button>
+        </div>
+        <div class="offline-pill"><span class="status-dot"></span><span data-short-en="Offline Only" data-short-de="Nur Offline">Offline Only</span></div>
+        <div class="header-kicker">SINGLE PLAYER.<br><strong>ENDLESS POSSIBILITIES.</strong></div>
+      </div>
+    </div>
+  </header>
+
+  <main id="app">
+    <!-- ========================== MODS ========================== -->
+    <div class="app-view" id="view-mods" data-view="mods">
+      <div class="language-block" data-language="en">
+        <section class="mods-section section">
+          <div class="section-heading reveal visible">
+            <div class="eyebrow">OUR MODS</div>
+            <h1>FOUR <span>GTA V TOOLS.</span> <b>ONE HUB.</b></h1>
+            <p>Singleplayer menus and tools for GTA V with Script Hook V – all in one purple home base.</p>
+          </div>
+          <div class="cards-grid">
+            <article class="mod-card tilt reveal visible">
+              <div class="preview-wrap"><img src="assets/gigarazorl-preview.jpg" alt="GigarazorLP menu preview"><span class="preview-shine" aria-hidden="true"></span></div>
+              <div class="card-content"><h2>GIGARAZORLP</h2><div class="card-tag">THE ORIGINAL</div><p class="card-copy">Clean. Powerful. Timeless.<br>The classic design that started it all.</p><ul class="feature-list"><li>Full Story Mode Support</li><li>Wide Feature Set</li><li>Stable &amp; Lightweight</li><li>Regular Updates</li></ul><a class="button button-primary" href="#" data-download="GigarazorLP Legacy" data-link-key="gigarazorlLegacy"><span class="download-icon">↓</span>Download (Legacy)</a><a class="button button-secondary" href="#" data-download="GigarazorLP Enhanced" data-link-key="gigarazorlEnhanced"><span class="download-icon">↓</span>Download (Enhanced)</a><div class="version">Latest Version: v4.2</div></div>
+            </article>
+            <article class="mod-card tilt reveal visible">
+              <div class="preview-wrap"><img src="assets/sodium-preview.jpg" alt="Sodium menu preview"><span class="preview-shine" aria-hidden="true"></span></div>
+              <div class="card-content"><h2>SODIUM</h2><div class="card-tag">CLEAN &amp; MODERN</div><p class="card-copy">Minimal. Sleek. Focused.<br>A modern look for a smooth experience.</p><ul class="feature-list"><li>Modern UI Design</li><li>All Core Features</li><li>Optimized Performance</li><li>Regular Updates</li></ul><a class="button button-primary" href="#" data-download="Sodium Legacy" data-link-key="sodiumLegacy"><span class="download-icon">↓</span>Download (Legacy)</a><a class="button button-secondary" href="#" data-download="Sodium Enhanced" data-link-key="sodiumEnhanced"><span class="download-icon">↓</span>Download (Enhanced)</a><div class="version">Latest Version: v4.2</div></div>
+            </article>
+            <article class="mod-card tilt reveal visible">
+              <div class="preview-wrap"><img src="assets/pulseone-preview.jpg" alt="PulseOne menu preview"><span class="preview-shine" aria-hidden="true"></span></div>
+              <div class="card-content"><h2 class="pulse">PULSEONE</h2><div class="card-tag">DYNAMIC &amp; BOLD</div><p class="card-copy">Modern. Stylish. Different.<br>For everyone who likes a strong look.</p><ul class="feature-list"><li>Unique UI Style</li><li>All Core Features</li><li>Smooth &amp; Responsive</li><li>Regular Updates</li></ul><a class="button button-primary" href="#" data-download="PulseOne Legacy" data-link-key="pulseoneLegacy"><span class="download-icon">↓</span>Download (Legacy)</a><a class="button button-secondary" href="#" data-download="PulseOne Enhanced" data-link-key="pulseoneEnhanced"><span class="download-icon">↓</span>Download (Enhanced)</a><div class="version">Latest Version: v4.2</div></div>
+            </article>
+            <article class="mod-card tilt reveal visible">
+              <div class="preview-wrap"><img src="assets/esp-aimbot-preview.jpg" alt="GTA V singleplayer ESP and aim tool preview"><span class="preview-shine" aria-hidden="true"></span></div>
+              <div class="card-content"><h2 class="compact-title">ESP / AIMBOT TOOL</h2><div class="card-tag">GTA V SINGLEPLAYER</div><p class="card-copy">Utility. Overlay. Precision.<br>Offline tooling for your GTA V Story Mode setup.</p><ul class="feature-list"><li>Player &amp; NPC ESP</li><li>Singleplayer / Offline Focus</li><li>Lightweight Purple UI</li><li>Separate Download Slot</li></ul><a class="button button-primary" href="#" data-download="ESP / Aimbot Tool – GTA V SP" data-link-key="espGtav"><span class="download-icon">↓</span>Download GTA V SP</a><a class="button button-secondary" href="#installation" data-view-target="installation"><span class="download-icon">↗</span>Installation Guide</a><div class="version">Latest Version: v1.0</div></div>
+            </article>
+          </div>
+          <div class="trust-row reveal visible"><div class="trust-item"><div class="trust-icon">🎮</div><div><strong>100% Story Mode</strong><span>Offline only. No online use.</span></div></div><div class="trust-item"><div class="trust-icon">◇</div><div><strong>Singleplayer Focus</strong><span>Built for offline play.</span></div></div><div class="trust-item"><div class="trust-icon">⚙</div><div><strong>Regular Updates</strong><span>New features and fixes.</span></div></div><div class="trust-item"><div class="trust-icon">♥</div><div><strong>Made with Passion</strong><span>For the modding community.</span></div></div></div>
+        </section>
+        <section class="section rdr2-highlight reveal visible"><article class="content-card feature-panel"><div class="feature-panel-text"><div class="eyebrow left">SEPARATE GAME TAB</div><h2>SODIUM <span>FOR RDR2</span></h2><p>Red Dead Redemption 2 has its own trainer area, downloads and western-neon artwork.</p><div class="feature-panel-actions"><a class="button button-primary" href="#rdr2" data-view-target="rdr2">Open RDR2 Trainer</a><a class="button button-secondary" href="#rdr2" data-view-target="rdr2">RDR2 Downloads</a></div></div><div class="feature-panel-media"><img src="assets/sodium-rdr2-preview.jpg" alt="Sodium for Red Dead Redemption 2"></div></article></section>
+        <section class="promo-section section"><article class="promo-card install-card tilt reveal visible"><div class="promo-content"><div class="eyebrow left">GET STARTED</div><h2>INSTALLATION <span>GUIDE</span></h2><p>A simple step-by-step guide for GTA V and RDR2.</p><a class="outline-button" href="#installation" data-view-target="installation">View Guide <span>→</span></a></div><div class="promo-art install-art" aria-hidden="true"></div><div class="promo-symbol gear-symbol" aria-hidden="true">⚙</div></article><article class="promo-card faq-card tilt reveal visible"><div class="promo-content"><div class="eyebrow left">FREQUENTLY ASKED QUESTIONS</div><h2>HAVE <span>QUESTIONS?</span></h2><p>Find the most important answers in one place.</p><a class="outline-button" href="#faq" data-view-target="faq">Open FAQ <span>→</span></a></div><div class="promo-art faq-art" aria-hidden="true"></div><div class="promo-symbol chat-symbol" aria-hidden="true">•••</div></article></section>
+        <section class="info-section section"><article class="info-card reveal visible"><h3>▣ REQUIREMENTS</h3><ul class="compact-list check-list"><li>Grand Theft Auto V</li><li>Windows 10/11 64-bit</li><li>Script Hook V for GTA V content</li><li>Required loader for the specific package</li></ul></article><article class="info-card reveal visible"><h3>◆ IMPORTANT</h3><ul class="compact-list warning-list"><li>Story Mode / Singleplayer only</li><li>Do not use in GTA Online</li><li>Do not use in Red Dead Online</li><li>Back up your game before modding</li></ul></article><article class="info-card reveal visible"><h3>● DISCLAIMER</h3><p>Independent fan project. Not affiliated with or endorsed by Rockstar Games or Take-Two Interactive. Game names and trademarks belong to their respective owners.</p></article></section>
+        <section class="section wide-note security-note"><strong>Security check:</strong> Project downloads are checked to the best of our knowledge for obvious malware before publication. You can independently scan every downloaded file with your own antivirus software or another trusted scanner before opening it. No security scan can provide an absolute 100% guarantee.</section>
+      </div>
+
+      <div class="language-block" data-language="de" hidden>
+        <section class="mods-section section">
+          <div class="section-heading reveal visible"><div class="eyebrow">UNSERE MODS</div><h1>VIER <span>GTA V TOOLS.</span> <b>EIN HUB.</b></h1><p>Singleplayer-Menüs und Tools für GTA V mit Script Hook V – alles in einem lila Hub.</p></div>
+          <div class="cards-grid">
+            <article class="mod-card tilt reveal visible"><div class="preview-wrap"><img src="assets/gigarazorl-preview.jpg" alt="GigarazorLP Menü Vorschau"><span class="preview-shine" aria-hidden="true"></span></div><div class="card-content"><h2>GIGARAZORLP</h2><div class="card-tag">DAS ORIGINAL</div><p class="card-copy">Clean. Leistungsstark. Zeitlos.<br>Das klassische Design, mit dem alles begann.</p><ul class="feature-list"><li>Volle Story-Mode-Unterstützung</li><li>Viele Funktionen</li><li>Stabil &amp; leichtgewichtig</li><li>Regelmäßige Updates</li></ul><a class="button button-primary" href="#" data-download="GigarazorLP Legacy" data-link-key="gigarazorlLegacy"><span class="download-icon">↓</span>Download (Legacy)</a><a class="button button-secondary" href="#" data-download="GigarazorLP Enhanced" data-link-key="gigarazorlEnhanced"><span class="download-icon">↓</span>Download (Enhanced)</a><div class="version">Aktuelle Version: v4.2</div></div></article>
+            <article class="mod-card tilt reveal visible"><div class="preview-wrap"><img src="assets/sodium-preview.jpg" alt="Sodium Menü Vorschau"><span class="preview-shine" aria-hidden="true"></span></div><div class="card-content"><h2>SODIUM</h2><div class="card-tag">CLEAN &amp; MODERN</div><p class="card-copy">Minimal. Elegant. Fokussiert.<br>Ein moderner Look für ein ruhiges Erlebnis.</p><ul class="feature-list"><li>Modernes UI-Design</li><li>Alle Kernfunktionen</li><li>Optimierte Performance</li><li>Regelmäßige Updates</li></ul><a class="button button-primary" href="#" data-download="Sodium Legacy" data-link-key="sodiumLegacy"><span class="download-icon">↓</span>Download (Legacy)</a><a class="button button-secondary" href="#" data-download="Sodium Enhanced" data-link-key="sodiumEnhanced"><span class="download-icon">↓</span>Download (Enhanced)</a><div class="version">Aktuelle Version: v4.2</div></div></article>
+            <article class="mod-card tilt reveal visible"><div class="preview-wrap"><img src="assets/pulseone-preview.jpg" alt="PulseOne Menü Vorschau"><span class="preview-shine" aria-hidden="true"></span></div><div class="card-content"><h2 class="pulse">PULSEONE</h2><div class="card-tag">DYNAMISCH &amp; MARKANT</div><p class="card-copy">Modern. Stylisch. Anders.<br>Für alle, die einen starken Look mögen.</p><ul class="feature-list"><li>Einzigartiger UI-Stil</li><li>Alle Kernfunktionen</li><li>Flüssig &amp; responsiv</li><li>Regelmäßige Updates</li></ul><a class="button button-primary" href="#" data-download="PulseOne Legacy" data-link-key="pulseoneLegacy"><span class="download-icon">↓</span>Download (Legacy)</a><a class="button button-secondary" href="#" data-download="PulseOne Enhanced" data-link-key="pulseoneEnhanced"><span class="download-icon">↓</span>Download (Enhanced)</a><div class="version">Aktuelle Version: v4.2</div></div></article>
+            <article class="mod-card tilt reveal visible"><div class="preview-wrap"><img src="assets/esp-aimbot-preview.jpg" alt="GTA V Singleplayer ESP und Aimbot Tool Vorschau"><span class="preview-shine" aria-hidden="true"></span></div><div class="card-content"><h2 class="compact-title">ESP / AIMBOT TOOL</h2><div class="card-tag">GTA V SINGLEPLAYER</div><p class="card-copy">Utility. Overlay. Präzision.<br>Offline-Tooling für dein GTA-V-Story-Mode-Setup.</p><ul class="feature-list"><li>Player- &amp; NPC-ESP</li><li>Singleplayer-/Offline-Fokus</li><li>Leichtes lila UI</li><li>Eigener Download-Slot</li></ul><a class="button button-primary" href="#" data-download="ESP / Aimbot Tool – GTA V SP" data-link-key="espGtav"><span class="download-icon">↓</span>GTA V SP herunterladen</a><a class="button button-secondary" href="#installation" data-view-target="installation"><span class="download-icon">↗</span>Installationsanleitung</a><div class="version">Aktuelle Version: v1.0</div></div></article>
+          </div>
+          <div class="trust-row reveal visible"><div class="trust-item"><div class="trust-icon">🎮</div><div><strong>100 % Story Mode</strong><span>Nur offline. Kein Online-Einsatz.</span></div></div><div class="trust-item"><div class="trust-icon">◇</div><div><strong>Singleplayer-Fokus</strong><span>Für Offline-Spiel gedacht.</span></div></div><div class="trust-item"><div class="trust-icon">⚙</div><div><strong>Regelmäßige Updates</strong><span>Neue Funktionen und Fixes.</span></div></div><div class="trust-item"><div class="trust-icon">♥</div><div><strong>Mit Leidenschaft</strong><span>Für die Modding-Community.</span></div></div></div>
+        </section>
+        <section class="section rdr2-highlight reveal visible"><article class="content-card feature-panel"><div class="feature-panel-text"><div class="eyebrow left">EIGENER SPIEL-REITER</div><h2>SODIUM <span>FÜR RDR2</span></h2><p>Red Dead Redemption 2 hat einen eigenen Trainer-Bereich mit eigenen Downloads und passendem Western-Neon-Artwork.</p><div class="feature-panel-actions"><a class="button button-primary" href="#rdr2" data-view-target="rdr2">RDR2 Trainer öffnen</a><a class="button button-secondary" href="#rdr2" data-view-target="rdr2">RDR2 Downloads</a></div></div><div class="feature-panel-media"><img src="assets/sodium-rdr2-preview.jpg" alt="Sodium für Red Dead Redemption 2"></div></article></section>
+        <section class="promo-section section"><article class="promo-card install-card tilt reveal visible"><div class="promo-content"><div class="eyebrow left">LOSLEGEN</div><h2>INSTALLATIONS-<span>ANLEITUNG</span></h2><p>Schritt für Schritt für GTA V und RDR2.</p><a class="outline-button" href="#installation" data-view-target="installation">Anleitung öffnen <span>→</span></a></div><div class="promo-art install-art" aria-hidden="true"></div><div class="promo-symbol gear-symbol" aria-hidden="true">⚙</div></article><article class="promo-card faq-card tilt reveal visible"><div class="promo-content"><div class="eyebrow left">HÄUFIGE FRAGEN</div><h2>NOCH <span>FRAGEN?</span></h2><p>Die wichtigsten Antworten an einem Ort.</p><a class="outline-button" href="#faq" data-view-target="faq">FAQ öffnen <span>→</span></a></div><div class="promo-art faq-art" aria-hidden="true"></div><div class="promo-symbol chat-symbol" aria-hidden="true">•••</div></article></section>
+        <section class="info-section section"><article class="info-card reveal visible"><h3>▣ VORAUSSETZUNGEN</h3><ul class="compact-list check-list"><li>Grand Theft Auto V</li><li>Windows 10/11 64-bit</li><li>Script Hook V für GTA-V-Inhalte</li><li>Benötigter Loader für das jeweilige Paket</li></ul></article><article class="info-card reveal visible"><h3>◆ WICHTIG</h3><ul class="compact-list warning-list"><li>Nur Story Mode / Singleplayer</li><li>Nicht in GTA Online verwenden</li><li>Nicht in Red Dead Online verwenden</li><li>Vor Modding ein Backup erstellen</li></ul></article><article class="info-card reveal visible"><h3>● DISCLAIMER</h3><p>Unabhängiges Fanprojekt. Keine offizielle Verbindung zu Rockstar Games oder Take-Two Interactive. Spielnamen und Marken gehören ihren jeweiligen Rechteinhabern.</p></article></section>
+        <section class="section wide-note security-note"><strong>Sicherheitsprüfung:</strong> Projekt-Downloads werden vor der Veröffentlichung nach bestem Wissen auf offensichtliche Schadsoftware geprüft. Du kannst jede heruntergeladene Datei vor dem Öffnen zusätzlich selbst mit deinem Virenschutz oder einem anderen vertrauenswürdigen Scanner überprüfen. Kein Sicherheits-Scan kann eine absolute 100-%-Garantie geben.</section>
+      </div>
+    </div>
+
+    <!-- ========================== RDR2 ========================== -->
+    <div class="app-view" id="view-rdr2" data-view="rdr2" hidden>
+      <div class="language-block" data-language="en">
+        <div class="subpage-main"><section class="section subpage-hero"><div class="eyebrow">SEPARATE GAME TAB</div><h1>SODIUM <span>RDR2</span></h1><p>A dedicated Red Dead Redemption 2 Story Mode trainer area, separate from GTA V.</p></section>
+        <section class="section"><article class="content-card feature-panel rdr2-page-panel"><div class="feature-panel-text"><div class="eyebrow left">RED DEAD REDEMPTION 2</div><h2>SODIUM <span>TRAINER</span></h2><p>Singleplayer-focused RDR2 trainer area with its own downloads, installation notes and western-neon artwork.</p><ul class="feature-list feature-list-inline"><li>Singleplayer / Offline Focus</li><li>Dedicated RDR2 Downloads</li><li>Separate from GTA V</li><li>Matching Purple-Western Style</li></ul><div class="feature-panel-actions two-col-actions"><a class="button button-primary" href="#" data-download="Sodium RDR2 – Main" data-link-key="sodiumRdr2Main"><span class="download-icon">↓</span>Download Main</a><a class="button button-secondary" href="#" data-download="Sodium RDR2 – Mirror" data-link-key="sodiumRdr2Mirror"><span class="download-icon">↓</span>Download Mirror</a></div></div><div class="feature-panel-media large-media"><img src="assets/sodium-rdr2-preview.jpg" alt="Sodium trainer for Red Dead Redemption 2"></div></article></section>
+        <section class="section content-grid"><article class="content-card"><div class="step-number">01</div><h2>Open the RDR2 folder</h2><p>Open the Red Dead Redemption 2 installation directory and make a backup before changing files.</p></article><article class="content-card"><div class="step-number">02</div><h2>Use the RDR2 loader</h2><p><strong>Script Hook V is for GTA V and is not used here.</strong> Install only the RDR2-compatible loader or Script Hook required by your Sodium RDR2 package.</p></article><article class="content-card"><div class="step-number">03</div><h2>Install Sodium</h2><p>Extract the package and copy its files to the exact folders described in your included readme. Start RDR2 in Story Mode only.</p></article></section>
+        <section class="section wide-note"><strong>Offline only:</strong> This trainer area is intended for Red Dead Redemption 2 Story Mode, not Red Dead Online.</section></div>
+      </div>
+      <div class="language-block" data-language="de" hidden>
+        <div class="subpage-main"><section class="section subpage-hero"><div class="eyebrow">EIGENER SPIEL-REITER</div><h1>SODIUM <span>RDR2</span></h1><p>Eigener Trainer-Bereich für Red Dead Redemption 2 Story Mode – sauber von GTA V getrennt.</p></section>
+        <section class="section"><article class="content-card feature-panel rdr2-page-panel"><div class="feature-panel-text"><div class="eyebrow left">RED DEAD REDEMPTION 2</div><h2>SODIUM <span>TRAINER</span></h2><p>Singleplayer-RDR2-Trainer mit eigenen Downloads, Installationshinweisen und passendem Western-Neon-Artwork.</p><ul class="feature-list feature-list-inline"><li>Singleplayer-/Offline-Fokus</li><li>Eigene RDR2-Downloads</li><li>Getrennt von GTA V</li><li>Passender Lila-Western-Stil</li></ul><div class="feature-panel-actions two-col-actions"><a class="button button-primary" href="#" data-download="Sodium RDR2 – Main" data-link-key="sodiumRdr2Main"><span class="download-icon">↓</span>Main herunterladen</a><a class="button button-secondary" href="#" data-download="Sodium RDR2 – Mirror" data-link-key="sodiumRdr2Mirror"><span class="download-icon">↓</span>Mirror herunterladen</a></div></div><div class="feature-panel-media large-media"><img src="assets/sodium-rdr2-preview.jpg" alt="Sodium Trainer für Red Dead Redemption 2"></div></article></section>
+        <section class="section content-grid"><article class="content-card"><div class="step-number">01</div><h2>RDR2-Spielordner öffnen</h2><p>Öffne den Hauptordner von Red Dead Redemption 2 und erstelle vor Änderungen ein Backup.</p></article><article class="content-card"><div class="step-number">02</div><h2>RDR2-Loader verwenden</h2><p><strong>Script Hook V gehört zu GTA V und wird hier nicht verwendet.</strong> Installiere nur den RDR2-kompatiblen Loader bzw. Script Hook, den dein Sodium-RDR2-Paket verlangt.</p></article><article class="content-card"><div class="step-number">03</div><h2>Sodium installieren</h2><p>Entpacke das Paket und kopiere die Dateien genau in die in deiner Readme angegebenen Ordner. RDR2 danach nur im Story Mode starten.</p></article></section>
+        <section class="section wide-note"><strong>Nur offline:</strong> Dieser Trainer-Bereich ist ausschließlich für Red Dead Redemption 2 Story Mode gedacht, nicht für Red Dead Online.</section></div>
+      </div>
+    </div>
+
+    <!-- ========================== INSTALLATION ========================== -->
+    <div class="app-view" id="view-installation" data-view="installation" hidden>
+      <div class="language-block" data-language="en"><div class="subpage-main">
+        <section class="section subpage-hero">
+          <div class="eyebrow">GET STARTED</div>
+          <h1>ASI MENU <span>INSTALLATION</span></h1>
+          <p>Complete GTA V Story Mode setup with Script Hook V, the ASI Loader and optional Script Hook V .NET.</p>
+        </section>
+
+        <section class="section install-source-links">
+          <a class="button button-primary" href="https://www.dev-c.com/gtav/scripthookv/">Official Script Hook V</a>
+          <a class="button button-secondary" href="https://github.com/scripthookvdotnet/scripthookvdotnet">Script Hook V .NET (optional)</a>
+        </section>
+
+        <section class="section content-grid install-steps">
+          <article class="content-card"><div class="step-number">01</div><h2>Open the GTA V main folder</h2><p>Open the folder that contains <code>GTA5.exe</code>. On Steam, Epic or the Rockstar Games Launcher you can use the launcher option to browse/open the installed game files. Back up important files and saves before modding.</p></article>
+          <article class="content-card"><div class="step-number">02</div><h2>Download Script Hook V</h2><p>Download the current Script Hook V release from Alexander Blade's official page. Check the supported game patches shown there, especially after a GTA V update.</p></article>
+          <article class="content-card"><div class="step-number">03</div><h2>Install Script Hook V + ASI Loader</h2><p>Open the Script Hook V archive and copy <code>ScriptHookV.dll</code> and <code>dinput8.dll</code> into the GTA V main folder next to <code>GTA5.exe</code>. <code>dinput8.dll</code> is the ASI Loader. If an old ASI Loader such as <code>dsound.dll</code> is installed, remove the old loader to avoid conflicts.</p></article>
+          <article class="content-card"><div class="step-number">04</div><h2>Native Trainer is optional</h2><p>The Script Hook V package can also contain <code>NativeTrainer.asi</code>. It is only a sample trainer and is not required for your own ASI menu. Copy it only if you actually want to use it.</p></article>
+          <article class="content-card"><div class="step-number">05</div><h2>Install your ASI menu</h2><p>Extract your downloaded menu. A normal <code>.asi</code> menu usually goes directly into the GTA V main folder next to <code>GTA5.exe</code>, <code>ScriptHookV.dll</code> and <code>dinput8.dll</code>. Copy any included <code>.ini</code>, <code>.dll</code>, data folders or other files exactly as described by the menu's readme.</p></article>
+          <article class="content-card"><div class="step-number">06</div><h2>.NET only when required</h2><p>Do not install Script Hook V .NET unless the mod explicitly needs it. If required, install its prerequisites and copy <code>ScriptHookVDotNet.asi</code>, <code>ScriptHookVDotNet2.dll</code> and <code>ScriptHookVDotNet3.dll</code> from the same release into the GTA V main folder. Create/use the <code>scripts</code> folder for .NET scripts.</p></article>
+          <article class="content-card"><div class="step-number">07</div><h2>Start GTA V Story Mode</h2><p>Launch GTA V and enter Story Mode only. Open the menu with the key stated by that menu, for example a function key or numpad key. Script Hook V is intended for singleplayer scripting and does not work in GTA Online.</p></article>
+          <article class="content-card"><div class="step-number">08</div><h2>After a GTA V update</h2><p>If a game update causes the menu to stop loading, first check whether a newer Script Hook V version supports the new game build. Replace the old Script Hook V runtime with the current compatible release before blaming the menu itself.</p></article>
+          <article class="content-card"><div class="step-number">09</div><h2>Updating your menu</h2><p>When updating a menu, follow its included instructions. Back up custom configuration files first. Do not mix files from different Script Hook V .NET releases; its ASI and API DLL files should be updated together.</p></article>
+        </section>
+
+        <section class="section content-card install-map-card">
+          <div class="eyebrow left">TYPICAL FILE LAYOUT</div>
+          <h2>What the GTA V folder usually looks like</h2>
+          <pre class="file-map"><code>Grand Theft Auto V/
+├─ GTA5.exe
+├─ ScriptHookV.dll
+├─ dinput8.dll              ← ASI Loader
+├─ YourMenu.asi             ← your ASI menu
+├─ YourMenu.ini             ← only if included
+└─ scripts/                 ← only for mods that require SHVDN</code></pre>
+        </section>
+
+        <section class="section content-grid install-steps">
+          <article class="content-card"><div class="step-number">?</div><h2>Menu does not open</h2><p>Check that <code>dinput8.dll</code>, <code>ScriptHookV.dll</code> and the menu's <code>.asi</code> file are next to <code>GTA5.exe</code>. Also check the menu's hotkey and whether its version supports your game build.</p></article>
+          <article class="content-card"><div class="step-number">!</div><h2>Game crashes on startup</h2><p>Temporarily remove third-party ASI mods and add them back one at a time. Conflicting or outdated ASI plugins are a common cause. Also make sure an old <code>dsound.dll</code> loader is not conflicting with <code>dinput8.dll</code>.</p></article>
+          <article class="content-card"><div class="step-number">↻</div><h2>Worked before an update</h2><p>Game updates can temporarily break Script Hook V compatibility. Check the official Script Hook V page for a build that supports your current GTA V patch.</p></article>
+        </section>
+
+        <section class="section wide-note"><strong>Important:</strong> This guide is for GTA V Story Mode / Singleplayer. Do not use these menus in GTA Online.</section>
+        <section class="section wide-note"><strong>RDR2:</strong> Red Dead Redemption 2 uses its own compatible loader/setup. Do not copy GTA V's <code>ScriptHookV.dll</code> into RDR2.</section>
+      </div></div>
+
+      <div class="language-block" data-language="de" hidden><div class="subpage-main">
+        <section class="section subpage-hero">
+          <div class="eyebrow">LOSLEGEN</div>
+          <h1>ASI-MENÜ <span>INSTALLIEREN</span></h1>
+          <p>Komplette GTA-V-Story-Mode-Anleitung mit Script Hook V, ASI Loader und optional Script Hook V .NET.</p>
+        </section>
+
+        <section class="section install-source-links">
+          <a class="button button-primary" href="https://www.dev-c.com/gtav/scripthookv/">Offizielles Script Hook V</a>
+          <a class="button button-secondary" href="https://github.com/scripthookvdotnet/scripthookvdotnet">Script Hook V .NET (optional)</a>
+        </section>
+
+        <section class="section content-grid install-steps">
+          <article class="content-card"><div class="step-number">01</div><h2>GTA-V-Hauptordner öffnen</h2><p>Öffne den Ordner, in dem <code>GTA5.exe</code> liegt. Bei Steam, Epic oder dem Rockstar Games Launcher kannst du über die Launcher-Funktion die installierten Spieldateien öffnen. Erstelle vor dem Modding ein Backup wichtiger Dateien und Spielstände.</p></article>
+          <article class="content-card"><div class="step-number">02</div><h2>Script Hook V herunterladen</h2><p>Lade die aktuelle Script-Hook-V-Version von der offiziellen Seite von Alexander Blade herunter. Prüfe dort besonders nach einem GTA-V-Update, welche Spiel-Patches aktuell unterstützt werden.</p></article>
+          <article class="content-card"><div class="step-number">03</div><h2>Script Hook V + ASI Loader installieren</h2><p>Öffne das Script-Hook-V-Archiv und kopiere <code>ScriptHookV.dll</code> sowie <code>dinput8.dll</code> in den GTA-V-Hauptordner direkt neben <code>GTA5.exe</code>. <code>dinput8.dll</code> ist der ASI Loader. Falls noch ein alter ASI Loader wie <code>dsound.dll</code> vorhanden ist, entferne den alten Loader, damit es keine Konflikte gibt.</p></article>
+          <article class="content-card"><div class="step-number">04</div><h2>Native Trainer ist optional</h2><p>Im Script-Hook-V-Paket kann zusätzlich <code>NativeTrainer.asi</code> enthalten sein. Das ist nur ein Beispiel-Trainer und für dein eigenes ASI-Menü nicht erforderlich. Kopiere ihn nur, wenn du ihn wirklich verwenden möchtest.</p></article>
+          <article class="content-card"><div class="step-number">05</div><h2>Dein ASI-Menü installieren</h2><p>Entpacke dein heruntergeladenes Menü. Eine normale <code>.asi</code>-Datei kommt üblicherweise direkt in den GTA-V-Hauptordner neben <code>GTA5.exe</code>, <code>ScriptHookV.dll</code> und <code>dinput8.dll</code>. Mitgelieferte <code>.ini</code>-, <code>.dll</code>-, Datenordner oder sonstige Dateien kopierst du genau so, wie es in der Readme des Menüs angegeben ist.</p></article>
+          <article class="content-card"><div class="step-number">06</div><h2>.NET nur wenn wirklich benötigt</h2><p>Installiere Script Hook V .NET nur, wenn dein Mod es ausdrücklich verlangt. Falls nötig, installiere die Voraussetzungen und kopiere <code>ScriptHookVDotNet.asi</code>, <code>ScriptHookVDotNet2.dll</code> und <code>ScriptHookVDotNet3.dll</code> aus derselben Version in den GTA-V-Hauptordner. Für .NET-Skripte wird der Ordner <code>scripts</code> verwendet.</p></article>
+          <article class="content-card"><div class="step-number">07</div><h2>GTA V im Story Mode starten</h2><p>Starte GTA V und gehe ausschließlich in den Story Mode. Öffne das Menü mit der Taste, die für dein Menü angegeben ist, zum Beispiel einer F-Taste oder einer Numpad-Taste. Script Hook V ist für Singleplayer-Skripte gedacht und funktioniert nicht in GTA Online.</p></article>
+          <article class="content-card"><div class="step-number">08</div><h2>Nach einem GTA-V-Update</h2><p>Falls das Menü nach einem Spiel-Update nicht mehr lädt, prüfe zuerst, ob eine neue Script-Hook-V-Version den neuen GTA-V-Build unterstützt. Ersetze die alte Script-Hook-V-Runtime durch die aktuelle kompatible Version, bevor du von einem Fehler im Menü ausgehst.</p></article>
+          <article class="content-card"><div class="step-number">09</div><h2>Menü aktualisieren</h2><p>Halte dich beim Update des Menüs an die beiliegende Anleitung und sichere vorher eigene Konfigurationsdateien. Mische bei Script Hook V .NET keine Dateien aus verschiedenen Releases; ASI- und API-DLL-Dateien sollten gemeinsam aktualisiert werden.</p></article>
+        </section>
+
+        <section class="section content-card install-map-card">
+          <div class="eyebrow left">TYPISCHER DATEIAUFBAU</div>
+          <h2>So sieht dein GTA-V-Ordner meistens aus</h2>
+          <pre class="file-map"><code>Grand Theft Auto V/
+├─ GTA5.exe
+├─ ScriptHookV.dll
+├─ dinput8.dll              ← ASI Loader
+├─ DeinMenu.asi             ← dein ASI-Menü
+├─ DeinMenu.ini             ← nur falls enthalten
+└─ scripts/                 ← nur für Mods mit SHVDN</code></pre>
+        </section>
+
+        <section class="section content-grid install-steps">
+          <article class="content-card"><div class="step-number">?</div><h2>Menü öffnet sich nicht</h2><p>Prüfe, ob <code>dinput8.dll</code>, <code>ScriptHookV.dll</code> und die <code>.asi</code>-Datei deines Menüs direkt neben <code>GTA5.exe</code> liegen. Prüfe außerdem die Menütaste und ob die Menüversion deinen GTA-V-Build unterstützt.</p></article>
+          <article class="content-card"><div class="step-number">!</div><h2>Spiel stürzt beim Start ab</h2><p>Entferne testweise Drittanbieter-ASI-Mods und füge sie danach einzeln wieder hinzu. Veraltete oder miteinander kollidierende ASI-Plugins sind eine häufige Ursache. Prüfe außerdem, dass kein alter <code>dsound.dll</code>-Loader mit <code>dinput8.dll</code> kollidiert.</p></article>
+          <article class="content-card"><div class="step-number">↻</div><h2>Vor dem Update ging es noch</h2><p>GTA-V-Updates können die Kompatibilität von Script Hook V vorübergehend unterbrechen. Prüfe auf der offiziellen Script-Hook-V-Seite, ob dein aktueller GTA-V-Patch unterstützt wird.</p></article>
+        </section>
+
+        <section class="section wide-note"><strong>Wichtig:</strong> Diese Anleitung ist ausschließlich für GTA V Story Mode / Singleplayer. Verwende die Menüs nicht in GTA Online.</section>
+        <section class="section wide-note"><strong>RDR2:</strong> Red Dead Redemption 2 verwendet ein eigenes kompatibles Loader-/Setup-System. Kopiere GTA Vs <code>ScriptHookV.dll</code> nicht nach RDR2.</section>
+      </div></div>
+    </div>
+
+    <!-- ========================== FAQ ========================== -->
+    <div class="app-view" id="view-faq" data-view="faq" hidden>
+      <div class="language-block" data-language="en"><div class="subpage-main"><section class="section subpage-hero"><div class="eyebrow">FREQUENTLY ASKED QUESTIONS</div><h1>HAVE <span>QUESTIONS?</span></h1><p>Quick answers about usage, privacy and Story Mode.</p></section><section class="section faq-page">
+        <details open><summary>Are YouTube or Discord embedded?</summary><p>No. They are plain external links only. No YouTube player, Discord widget or social SDK is loaded on page load.</p></details>
+        <details><summary>Are these downloads intended for online modes?</summary><p>No. They are intended for Singleplayer / Story Mode only, not GTA Online or Red Dead Online.</p></details>
+        <details><summary>Does the website use external fonts or libraries?</summary><p>No. CSS and JavaScript are inside this single HTML file, images are local in <code>assets/</code>, and no Google Fonts, CDN framework or external icon library is required.</p></details>
+        <details><summary>Are the downloads checked for malware?</summary><p>Project downloads are checked to the best of our knowledge before publication for obvious malware. You can and should independently scan a downloaded file with your own antivirus software or another trusted scanner before opening it. No scan can guarantee absolute 100% safety.</p></details>
+      </section></div></div>
+      <div class="language-block" data-language="de" hidden><div class="subpage-main"><section class="section subpage-hero"><div class="eyebrow">HÄUFIGE FRAGEN</div><h1>NOCH <span>FRAGEN?</span></h1><p>Kurze Antworten zu Nutzung, Datenschutz und Story Mode.</p></section><section class="section faq-page">
+        <details open><summary>Sind YouTube oder Discord eingebettet?</summary><p>Nein. Das sind nur normale externe Links. Beim Seitenaufruf werden kein YouTube-Player, kein Discord-Widget und kein Social-SDK geladen.</p></details>
+        <details><summary>Sind die Downloads für Online-Modi gedacht?</summary><p>Nein. Sie sind ausschließlich für Singleplayer / Story Mode vorgesehen, nicht für GTA Online oder Red Dead Online.</p></details>
+        <details><summary>Nutzt die Website externe Fonts oder Bibliotheken?</summary><p>Nein. CSS und JavaScript stecken direkt in dieser einen HTML-Datei, die Bilder liegen lokal unter <code>assets/</code>, und es werden weder Google Fonts noch CDN-Frameworks oder externe Icon-Libraries benötigt.</p></details>
+        <details><summary>Werden die Downloads auf Schadsoftware geprüft?</summary><p>Projekt-Downloads werden vor der Veröffentlichung nach bestem Wissen auf offensichtliche Schadsoftware geprüft. Du kannst und solltest eine heruntergeladene Datei vor dem Öffnen zusätzlich selbst mit deinem Virenschutz oder einem anderen vertrauenswürdigen Scanner überprüfen. Kein Scan kann eine absolute 100-%-Sicherheit garantieren.</p></details>
+      </section></div></div>
+    </div>
+
+    <!-- ========================== CREDITS ========================== -->
+    <div class="app-view" id="view-credits" data-view="credits" hidden>
+      <div class="language-block" data-language="en"><div class="subpage-main"><section class="section subpage-hero"><div class="eyebrow">PROJECT</div><h1>CREDITS <span>&amp; THANKS</span></h1><p>Project credits, acknowledgements and AI-art transparency.</p></section><section class="section content-grid credits-grid"><article class="content-card"><h2>GIGARAZORLP</h2><p>Project direction, concept, development and maintenance. Replace this text if you want to list additional contributors.</p></article><article class="content-card"><h2>COMMUNITY</h2><p>Thanks to testers, feedback contributors and everyone supporting the project.</p></article><article class="content-card ai-art-card"><div class="step-number">AI</div><h2>AI ART / TRANSPARENCY</h2><p>Some decorative website artwork was created with generative AI and then selected or edited for this project. The images are stylized fictional fan art and are not presented as real photography, authentic documentation of real events or official Rockstar Games artwork.</p><p class="ai-note">The website itself does not contain an AI chatbot and does not analyze visitor data with AI.</p></article></section><section class="section wide-note">Grand Theft Auto V, Red Dead Redemption 2, Rockstar Games, Take-Two Interactive and related marks belong to their respective rights holders. This is an independent fan project.</section></div></div>
+      <div class="language-block" data-language="de" hidden><div class="subpage-main"><section class="section subpage-hero"><div class="eyebrow">PROJEKT</div><h1>CREDITS <span>&amp; DANKE</span></h1><p>Projekt-Credits, Danksagungen und Transparenz zu KI-Artwork.</p></section><section class="section content-grid credits-grid"><article class="content-card"><h2>GIGARAZORLP</h2><p>Projektleitung, Konzept, Entwicklung und Pflege. Ergänze hier bei Bedarf weitere Mitwirkende.</p></article><article class="content-card"><h2>COMMUNITY</h2><p>Danke an Tester, Feedback-Geber und alle, die das Projekt unterstützen.</p></article><article class="content-card ai-art-card"><div class="step-number">AI</div><h2>AI ART / KI-HINWEIS</h2><p>Ein Teil der dekorativen Website-Artworks wurde mit generativer KI erstellt und anschließend für dieses Projekt ausgewählt bzw. bearbeitet. Die Bilder sind stilisierte, fiktive Fan-Art und werden nicht als echte Fotografie, authentische Dokumentation realer Ereignisse oder offizielles Rockstar-Games-Artwork dargestellt.</p><p class="ai-note">Die Website selbst enthält keinen KI-Chatbot und analysiert keine Besucherdaten mit KI.</p></article></section><section class="section wide-note">Grand Theft Auto V, Red Dead Redemption 2, Rockstar Games, Take-Two Interactive und zugehörige Marken gehören ihren jeweiligen Rechteinhabern. Dieses Projekt ist ein unabhängiges Fanprojekt.</section></div></div>
+    </div>
+
+    <!-- ========================== IMPRINT ========================== -->
+    <div class="app-view" id="view-imprint" data-view="imprint" hidden>
+      <div class="language-block" data-language="en"><div class="subpage-main"><section class="section subpage-hero"><div class="eyebrow">LEGAL</div><h1>IMPRINT</h1><p>Provider and contact information for this website.</p></section><section class="section legal-card"><h2>Provider / operator</h2><p><strong>Name:</strong><br><span class="owner-value" data-owner="name">[FULL NAME]</span></p>
+      <p><strong>Address:</strong><br><span class="owner-value" data-owner="street">[STREET + HOUSE NUMBER]</span><br><span class="owner-value" data-owner="city">[POSTCODE + CITY]</span><br><span data-owner="country">Germany</span></p>
+      <p><strong>Email:</strong><br><span class="owner-value" data-owner="email">[EMAIL ADDRESS]</span></p><h2>Responsible person for editorial content</h2><p>Where a separate responsible-person statement is legally required for editorial content, the person named above is responsible at the address stated above.</p><h2>Project purpose / Story Mode</h2><p>The mod menus and trainers presented here are intended exclusively for private Singleplayer / Story Mode use. They are not intended for GTA Online or Red Dead Online.</p><h2>Fan project / trademarks</h2><p>This is an independent fan project and is not officially affiliated with, sponsored by or endorsed by Rockstar Games, Take-Two Interactive or their affiliated companies. Grand Theft Auto V, Red Dead Redemption 2 and related names, logos and trademarks belong to their respective rights holders.</p><h2>AI artwork</h2><p>Some decorative artwork was created with generative AI. See the Credits tab for the transparency notice.</p></section></div></div>
+      <div class="language-block" data-language="de" hidden><div class="subpage-main"><section class="section subpage-hero"><div class="eyebrow">RECHTLICHES</div><h1>IMPRESSUM</h1><p>Anbieter- und Kontaktinformationen für diese Website.</p></section><section class="section legal-card"><h2>Anbieter / Betreiber</h2><p><strong>Name:</strong><br><span class="owner-value" data-owner="name">[VORNAME NACHNAME]</span></p>
+      <p><strong>Ladungsfähige Anschrift:</strong><br><span class="owner-value" data-owner="street">[STRASSE HAUSNUMMER]</span><br><span class="owner-value" data-owner="city">[PLZ ORT]</span><br><span data-owner="country">Deutschland</span></p>
+      <p><strong>E-Mail:</strong><br><span class="owner-value" data-owner="email">[E-MAIL-ADRESSE]</span></p><h2>Verantwortlich für redaktionelle Inhalte</h2><p>Soweit für redaktionelle Inhalte eine gesonderte Verantwortlichenangabe erforderlich ist, ist die oben genannte Person unter der oben genannten Anschrift verantwortlich.</p><h2>Projektzweck / Story Mode</h2><p>Die vorgestellten Mod-Menüs und Trainer sind ausschließlich für den privaten Singleplayer-/Story-Mode vorgesehen. Sie sind nicht für GTA Online oder Red Dead Online bestimmt.</p><h2>Fanprojekt / Markenhinweis</h2><p>Dieses Projekt ist ein unabhängiges Fanprojekt und nicht offiziell mit Rockstar Games, Take-Two Interactive oder verbundenen Unternehmen verbunden, gesponsert oder von ihnen unterstützt. Grand Theft Auto V, Red Dead Redemption 2 sowie zugehörige Namen, Logos und Marken gehören ihren jeweiligen Rechteinhabern.</p><h2>KI-Artwork</h2><p>Ein Teil der dekorativen Artworks wurde mit generativer KI erstellt. Den Transparenzhinweis findest du im Reiter Credits.</p></section></div></div>
+    </div>
+
+    <!-- ========================== PRIVACY ========================== -->
+    <div class="app-view" id="view-privacy" data-view="privacy" hidden>
+      <div class="language-block" data-language="en"><div class="subpage-main"><section class="section subpage-hero"><div class="eyebrow">LEGAL &amp; PRIVACY</div><h1>PRIVACY <span>POLICY</span></h1><p>Static GitHub Pages website with no analytics, no external fonts and no embedded social-media content.</p></section><div class="privacy-status-row section"><span class="privacy-chip">NO ANALYTICS</span><span class="privacy-chip">NO EXTERNAL FONTS</span><span class="privacy-chip">NO OWN COOKIES</span><span class="privacy-chip">STATIC SITE</span><span class="privacy-chip">SOCIAL LINKS ONLY</span></div><section class="section legal-card">
+        <h2>1. Controller</h2><p>The controller for personal-data processing on this website is the operator named in the Imprint tab: <span class="owner-value" data-owner="name">[FULL NAME]</span>, reachable at <span class="owner-value" data-owner="email">[EMAIL]</span>. The full postal address is shown in the Imprint.</p>
+
+        <h2>2. Hosting via GitHub Pages</h2><p>This website is hosted via GitHub Pages. GitHub states that when a GitHub Pages site is visited, the visitor's IP address is logged and stored for security purposes, regardless of whether the visitor is signed in to GitHub. GitHub's privacy statement also describes processing of service-usage information such as IP address, device/session information, date and time of requests and website-usage data. This website itself does not run its own IP logger, visitor profiles or analytics. To the extent the operator is responsible for hosting-related processing, it is carried out for secure and reliable website delivery on the basis of the legitimate interest in operating this website (Art. 6(1)(f) GDPR).</p><div class="legal-source-links"><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages" target="_blank" rel="noopener noreferrer external" referrerpolicy="no-referrer">GitHub Pages information ↗</a><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer external" referrerpolicy="no-referrer">GitHub Privacy Statement ↗</a></div>
+
+        <h2>3. Downloads via Google Drive</h2><p>Download buttons may lead to files on Google Drive. Google Drive is not embedded into this page; a connection to Google is made only after the visitor actively clicks a download link. Google states that its services can collect technical information including the IP address, browser and device information, operating system, system activity, and the date and time of a request. Google also lists the referrer URL as information that may be collected; this website therefore uses a <code>no-referrer</code> policy so the address of the previously visited page is not intentionally sent as a referrer. Google may process information on servers outside the visitor's country and describes safeguards such as adequacy decisions, the EU-U.S. Data Privacy Framework and standard contractual clauses.</p><div class="legal-source-links"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer external" referrerpolicy="no-referrer">Google Privacy Policy ↗</a><a href="https://policies.google.com/privacy/frameworks" target="_blank" rel="noopener noreferrer external" referrerpolicy="no-referrer">Google data-transfer frameworks ↗</a></div>
+
+        <h2>4. External links: YouTube, Discord and other websites</h2><p>YouTube and Discord are linked only through normal external links. No YouTube player, Discord widget, login or social-media SDK is embedded. A connection to these providers is made only after an active click. YouTube is a Google service, so the Google information described above may apply after opening YouTube. Discord states that it automatically collects device and usage information including IP address, operating system and browser information when its services are used. Other external links on this site, such as official Script Hook V documentation or GitHub project pages, are also opened only after a click. All absolute external links are configured with <code>noopener</code>, <code>noreferrer</code> and <code>no-referrer</code>. After opening an external website, that provider's own privacy terms apply.</p><div class="legal-source-links"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer external" referrerpolicy="no-referrer">Google / YouTube Privacy ↗</a><a href="https://discord.com/privacy" target="_blank" rel="noopener noreferrer external" referrerpolicy="no-referrer">Discord Privacy ↗</a></div>
+
+        <h2>5. Cookies, browser storage and tracking</h2><p>The website code itself does not set cookies and does not use <code>localStorage</code> or <code>sessionStorage</code>. The language toggle is not saved between visits. No tracking pixels, analytics services, advertising networks or external font/icon CDNs are included. If a visitor follows an external link, the destination provider may use its own cookies or similar technologies on its own website according to its privacy policy.</p>
+
+        <h2>6. Contact by email</h2><p>If you contact the operator by email, the information you send is processed to answer your request. Depending on the nature of the request, the legal basis is Art. 6(1)(b) GDPR for contractual or pre-contractual communication or Art. 6(1)(f) GDPR for other legitimate communication interests. Messages are kept only as long as needed to handle the request, unless statutory retention obligations require longer storage.</p>
+
+        <h2>7. Recipients and international processing</h2><p>For normal website visits, GitHub is the hosting provider. Google/YouTube and Discord receive data only when their links or downloads are opened. These providers may process data in the United States or other countries. Their current privacy policies describe the applicable transfer safeguards, including the EU-U.S. Data Privacy Framework and/or standard contractual clauses where applicable.</p>
+
+        <h2>8. Storage period</h2><p>The operator does not maintain its own visitor log or analytics database. Retention of hosting, Google or Discord connection data is determined by the respective provider under its own policies. Email correspondence is retained only for the purpose described above and for any legally required retention period.</p>
+
+        <h2>9. Your rights and complaints</h2><p>Where the GDPR applies, data subjects may have rights to access, rectification, erasure, restriction of processing, data portability and objection, depending on the legal requirements. Where processing is based on consent, consent can be withdrawn for the future. A complaint may also be lodged with a competent data-protection supervisory authority. For a private operator based in Bavaria, the competent authority is generally the Bavarian State Office for Data Protection Supervision (BayLDA).</p><div class="legal-source-links"><a href="https://www.lda.bayern.de/" target="_blank" rel="noopener noreferrer external" referrerpolicy="no-referrer">BayLDA ↗</a></div>
+
+        <h2>10. No automated decision-making</h2><p>This website does not carry out automated decision-making or profiling of visitors.</p>
+
+        <h2>11. AI-generated graphics</h2><p>Some visual artwork was created with generative AI and then selected or edited for this fan project. This transparency notice concerns how the images were created; it does not create additional visitor-data processing.</p>
+
+        <h2>12. Version</h2><p>Version date: <strong>20 September 2026</strong>.</p>
+      </section></div></div>
+
+      <div class="language-block" data-language="de" hidden><div class="subpage-main"><section class="section subpage-hero"><div class="eyebrow">RECHTLICHES &amp; DATENSCHUTZ</div><h1>DATEN<span>SCHUTZ</span></h1><p>Statische GitHub-Pages-Website ohne Webanalyse, externe Schriftarten oder eingebettete Social-Media-Inhalte.</p></section><div class="privacy-status-row section"><span class="privacy-chip">KEINE ANALYSE</span><span class="privacy-chip">KEINE EXTERNEN FONTS</span><span class="privacy-chip">KEINE EIGENEN COOKIES</span><span class="privacy-chip">STATISCHE SEITE</span><span class="privacy-chip">NUR SOCIAL-LINKS</span></div><section class="section legal-card">
+        <h2>1. Verantwortlicher</h2><p>Verantwortlicher für die Verarbeitung personenbezogener Daten auf dieser Website ist der im Impressum genannte Betreiber: <span class="owner-value" data-owner="name">[VORNAME NACHNAME]</span>, erreichbar unter <span class="owner-value" data-owner="email">[E-MAIL]</span>. Die vollständige Anschrift steht im Impressum.</p>
+
+        <h2>2. Hosting über GitHub Pages</h2><p>Diese Website wird über GitHub Pages gehostet. GitHub gibt an, dass beim Besuch einer GitHub-Pages-Website die IP-Adresse des Besuchers für Sicherheitszwecke protokolliert und gespeichert wird – unabhängig davon, ob die Person bei GitHub angemeldet ist. In der GitHub-Datenschutzerklärung wird außerdem die Verarbeitung von Nutzungsinformationen wie IP-Adresse, Geräte-/Sitzungsinformationen, Datum und Uhrzeit von Anfragen sowie Website-Nutzungsdaten beschrieben. Diese Website selbst betreibt keinen eigenen IP-Logger, keine Besucherprofile und keine Webanalyse. Soweit der Betreiber für hostingbezogene Verarbeitungen verantwortlich ist, erfolgt die Verarbeitung zur sicheren und zuverlässigen Bereitstellung der Website auf Grundlage des berechtigten Interesses am Betrieb dieser Website (Art. 6 Abs. 1 lit. f DSGVO).</p><div class="legal-source-links"><a href="https://docs.github.com/de/pages/getting-started-with-github-pages/what-is-github-pages" target="_blank" rel="noopener noreferrer external" referrerpolicy="no-referrer">GitHub Pages Informationen ↗</a><a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer external" referrerpolicy="no-referrer">GitHub Datenschutzerklärung ↗</a></div>
+
+        <h2>3. Downloads über Google Drive</h2><p>Download-Buttons können zu Dateien bei Google Drive führen. Google Drive wird nicht in diese Seite eingebettet; eine Verbindung zu Google wird erst hergestellt, wenn der Besucher aktiv auf einen Download-Link klickt. Google gibt an, dass seine Dienste technische Informationen erfassen können, darunter IP-Adresse, Browser- und Geräteinformationen, Betriebssystem, Systemaktivität sowie Datum und Uhrzeit einer Anfrage. Google nennt außerdem die Referrer-URL als mögliche Information; deshalb verwendet diese Website die Referrer-Policy <code>no-referrer</code>, damit die Adresse der zuvor besuchten Seite nicht absichtlich als Referrer übertragen wird. Google kann Informationen auf Servern außerhalb des Landes des Besuchers verarbeiten und beschreibt dafür Schutzmechanismen wie Angemessenheitsbeschlüsse, den EU-US Data Privacy Framework und Standardvertragsklauseln.</p><div class="legal-source-links"><a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer external" referrerpolicy="no-referrer">Google Datenschutzerklärung ↗</a><a href="https://policies.google.com/privacy/frameworks?hl=de" target="_blank" rel="noopener noreferrer external" referrerpolicy="no-referrer">Google Datenübermittlungen ↗</a></div>
+
+        <h2>4. Externe Links: YouTube, Discord und weitere Websites</h2><p>YouTube und Discord werden ausschließlich über normale externe Links verlinkt. Es werden kein YouTube-Player, kein Discord-Widget, kein Login und kein Social-Media-SDK eingebettet. Eine Verbindung zu diesen Anbietern entsteht erst nach einem aktiven Klick. YouTube ist ein Google-Dienst; nach dem Öffnen können daher die oben beschriebenen Google-Verarbeitungen greifen. Discord gibt an, bei Nutzung seiner Dienste automatisch Geräte- und Nutzungsinformationen zu erfassen, darunter IP-Adresse, Betriebssystem und Browserinformationen. Weitere externe Links auf dieser Seite, etwa zur offiziellen Script-Hook-V-Dokumentation oder zu GitHub-Projektseiten, werden ebenfalls erst nach einem Klick geöffnet. Alle absoluten externen Links werden mit <code>noopener</code>, <code>noreferrer</code> und <code>no-referrer</code> geöffnet. Nach dem Aufruf einer externen Website gelten die Datenschutzbestimmungen des jeweiligen Anbieters.</p><div class="legal-source-links"><a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener noreferrer external" referrerpolicy="no-referrer">Google / YouTube Datenschutz ↗</a><a href="https://discord.com/privacy" target="_blank" rel="noopener noreferrer external" referrerpolicy="no-referrer">Discord Datenschutz ↗</a></div>
+
+        <h2>5. Cookies, Browser-Speicher und Tracking</h2><p>Der Website-Code selbst setzt keine Cookies und verwendet weder <code>localStorage</code> noch <code>sessionStorage</code>. Auch die Sprachauswahl wird nicht gespeichert. Tracking-Pixel, Webanalyse, Werbenetzwerke sowie externe Font- oder Icon-CDNs sind nicht eingebaut. Wenn ein Besucher einen externen Link öffnet, kann der jeweilige Zielanbieter auf seiner eigenen Website Cookies oder ähnliche Technologien nach seiner eigenen Datenschutzerklärung einsetzen.</p>
+
+        <h2>6. Kontaktaufnahme per E-Mail</h2><p>Wenn du den Betreiber per E-Mail kontaktierst, werden die von dir übermittelten Angaben zur Bearbeitung deiner Anfrage verarbeitet. Je nach Inhalt der Anfrage ist die Rechtsgrundlage Art. 6 Abs. 1 lit. b DSGVO bei vertraglicher oder vorvertraglicher Kommunikation oder Art. 6 Abs. 1 lit. f DSGVO bei sonstigen berechtigten Kommunikationsinteressen. Nachrichten werden nur so lange gespeichert, wie sie für die Bearbeitung benötigt werden, soweit keine gesetzlichen Aufbewahrungspflichten eine längere Speicherung verlangen.</p>
+
+        <h2>7. Empfänger und internationale Verarbeitung</h2><p>Bei normalen Website-Aufrufen ist GitHub der Hosting-Anbieter. Google/YouTube und Discord erhalten Daten erst, wenn ihre Links oder Downloads geöffnet werden. Diese Anbieter können Daten in den USA oder anderen Ländern verarbeiten. Die jeweils aktuellen Datenschutzerklärungen beschreiben die eingesetzten Garantien für internationale Datenübermittlungen, darunter – soweit anwendbar – den EU-US Data Privacy Framework und/oder Standardvertragsklauseln.</p>
+
+        <h2>8. Speicherdauer</h2><p>Der Betreiber führt keine eigene Besucher-Logdatei und keine Analytics-Datenbank. Die Speicherdauer von Hosting-, Google- oder Discord-Verbindungsdaten richtet sich nach den Vorgaben des jeweiligen Anbieters. E-Mail-Korrespondenz wird nur für den oben genannten Zweck und gegebenenfalls für gesetzlich vorgeschriebene Aufbewahrungsfristen gespeichert.</p>
+
+        <h2>9. Deine Rechte und Beschwerde</h2><p>Soweit die DSGVO anwendbar ist, können je nach gesetzlichen Voraussetzungen insbesondere Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch bestehen. Beruht eine Verarbeitung auf Einwilligung, kann diese für die Zukunft widerrufen werden. Außerdem besteht das Recht, sich bei einer zuständigen Datenschutzaufsichtsbehörde zu beschweren. Für einen privaten Betreiber mit Sitz in Bayern ist grundsätzlich das Bayerische Landesamt für Datenschutzaufsicht (BayLDA) zuständig.</p><div class="legal-source-links"><a href="https://www.lda.bayern.de/" target="_blank" rel="noopener noreferrer external" referrerpolicy="no-referrer">BayLDA ↗</a></div>
+
+        <h2>10. Keine automatisierten Entscheidungen</h2><p>Diese Website führt keine automatisierte Entscheidungsfindung und kein Profiling von Besuchern durch.</p>
+
+        <h2>11. KI-generierte Grafiken</h2><p>Ein Teil der visuellen Artwork-Assets wurde mithilfe generativer KI erstellt und anschließend für dieses Fanprojekt ausgewählt bzw. bearbeitet. Dieser Transparenzhinweis betrifft die Bildentstehung und führt zu keiner zusätzlichen Verarbeitung von Besucherdaten.</p>
+
+        <h2>12. Stand</h2><p>Stand: <strong>20. September 2026</strong>.</p>
+      </section></div></div>
+    </div>
+
+    <!-- ========================== TERMS ========================== -->
+    <div class="app-view" id="view-terms" data-view="terms" hidden>
+      <div class="language-block" data-language="en"><div class="subpage-main"><section class="section subpage-hero"><div class="eyebrow">LEGAL</div><h1>TERMS <span>OF USE</span></h1><p>Rules for the website and linked project downloads.</p></section><section class="section legal-card"><div class="legal-warning"><strong>Project notice:</strong> This website and its downloads are focused exclusively on Singleplayer / Story Mode, not GTA Online or Red Dead Online.</div><h2>1. Scope</h2><p>These terms apply to this website and to project files, mod menus, trainers, guides and other content linked or provided through it. Operator and contact details are shown in the Imprint tab.</p><h2>2. Story Mode / Offline only</h2><p>The mod menus and trainers described or linked here are intended exclusively for Singleplayer / Story Mode of the named games. GTA V content is not intended for GTA Online; RDR2 content is not intended for Red Dead Online.</p><p>The project files are not intended for online/multiplayer modes. Nothing on this site is intended as instructions to bypass online protections, anti-cheat systems or platform/game rules.</p><h2>3. Downloads and private use</h2><p>Use downloads according to their included readmes and license notices. Unless a project file states otherwise, it is intended for personal use in the specified Story Mode. Rights in third-party game content or trademarks are not transferred.</p><p>Download links may lead to external providers such as Google Drive. Links, files, versions and support information may be updated, replaced or removed.</p><p>Project downloads are checked to the best of our knowledge for obvious malware before publication. Users can independently scan downloaded files before opening them. Because no security scan can provide an absolute guarantee, normal caution and an up-to-date security solution are recommended.</p><h2>4. Installation, compatibility and backups</h2><p>Mods can become incompatible after game, launcher or operating-system updates. Back up important files and save data before installing. Install loaders such as Script Hook V only when the specific package requires them.</p><h2>5. External providers</h2><p>The website is hosted via GitHub Pages. Google Drive, YouTube and Discord are used only as external destinations in the supplied version; YouTube videos and Discord widgets are not embedded.</p><h2>6. Fan project and third-party rights</h2><p>This independent fan project is not officially affiliated with, sponsored by or endorsed by Rockstar Games or Take-Two Interactive. Game names, logos, trademarks and game content remain the property of their respective rights holders.</p><h2>7. AI-generated artwork</h2><p>Some decorative artwork was created using generative AI and then selected or edited for the site. See Credits for the transparency notice.</p><h2>8. Availability and liability</h2><p>No permanent availability of particular downloads, versions or external links is promised. Compatibility with every future game version or system configuration cannot be guaranteed. Use modifications at your own responsibility to the extent permitted by law; mandatory statutory liability remains unaffected.</p><h2>9. Changes</h2><p>These terms may be adjusted when functionality, downloads, hosting or the legal framework changes. Version date: <strong>20 September 2026</strong>.</p></section></div></div>
+      <div class="language-block" data-language="de" hidden><div class="subpage-main"><section class="section subpage-hero"><div class="eyebrow">RECHTLICHES</div><h1>NUTZUNGS-<span>BEDINGUNGEN</span></h1><p>Regeln für die Website und die verlinkten Projekt-Downloads.</p></section><section class="section legal-card"><div class="legal-warning"><strong>Projekt-Hinweis:</strong> Diese Website und die angebotenen Downloads sind ausschließlich auf Singleplayer / Story Mode ausgerichtet, nicht auf GTA Online oder Red Dead Online.</div><h2>1. Geltungsbereich</h2><p>Diese Bedingungen gelten für diese Website sowie für verlinkte oder bereitgestellte Projektdateien, Mod-Menüs, Trainer, Anleitungen und sonstige Inhalte. Betreiber und Kontakt stehen im Reiter Impressum.</p><h2>2. Ausschließlich Story Mode / Offline</h2><p>Die beschriebenen oder verlinkten Mod-Menüs und Trainer sind ausschließlich für den Singleplayer-/Story-Mode der genannten Spiele vorgesehen. GTA-V-Inhalte sind nicht für GTA Online und RDR2-Inhalte nicht für Red Dead Online bestimmt.</p><p>Die Projektdateien sind nicht für Online-/Multiplayer-Modi vorgesehen. Nichts auf dieser Seite ist als Anleitung zur Umgehung von Online-Schutzmaßnahmen, Anti-Cheat-Systemen oder Plattform-/Spielregeln gedacht.</p><h2>3. Downloads und private Nutzung</h2><p>Downloads sind nach den jeweils mitgelieferten Readmes und Lizenzhinweisen zu verwenden. Sofern eine Projektdatei nichts anderes angibt, ist sie für die persönliche Nutzung im vorgesehenen Story Mode bestimmt. Rechte an fremden Spielinhalten oder Marken werden nicht übertragen.</p><p>Download-Links können zu externen Anbietern wie Google Drive führen. Links, Dateien, Versionen und Support-Informationen können aktualisiert, ersetzt oder entfernt werden.</p><p>Projekt-Downloads werden vor der Veröffentlichung nach bestem Wissen auf offensichtliche Schadsoftware geprüft. Nutzer können heruntergeladene Dateien vor dem Öffnen zusätzlich selbst überprüfen. Da kein Sicherheits-Scan eine absolute Garantie geben kann, werden normale Vorsicht und ein aktueller Virenschutz empfohlen.</p><h2>4. Installation, Kompatibilität und Backups</h2><p>Mods können nach Spiel-, Launcher- oder Betriebssystem-Updates vorübergehend inkompatibel werden. Erstelle vor der Installation Backups wichtiger Dateien und Spielstände. Loader wie Script Hook V sind nur zu installieren, wenn das jeweilige Paket sie tatsächlich benötigt.</p><h2>5. Externe Anbieter</h2><p>Die Website wird über GitHub Pages gehostet. Google Drive, YouTube und Discord werden in der mitgelieferten Version nur als externe Ziele verwendet; YouTube-Videos und Discord-Widgets sind nicht eingebettet.</p><h2>6. Fanprojekt und Rechte Dritter</h2><p>Dieses unabhängige Fanprojekt ist nicht offiziell mit Rockstar Games oder Take-Two Interactive verbunden, gesponsert oder von ihnen unterstützt. Spielnamen, Logos, Marken und Spielinhalte bleiben Eigentum ihrer jeweiligen Rechteinhaber.</p><h2>7. KI-generiertes Artwork</h2><p>Ein Teil der dekorativen Artworks wurde mithilfe generativer KI erstellt und anschließend ausgewählt bzw. bearbeitet. Den Transparenzhinweis findest du unter Credits.</p><h2>8. Verfügbarkeit und Haftung</h2><p>Eine dauerhafte Verfügbarkeit bestimmter Downloads, Versionen oder externer Links wird nicht zugesagt. Die Kompatibilität mit jeder zukünftigen Spielversion oder Systemkonfiguration kann nicht garantiert werden. Soweit gesetzlich zulässig, erfolgt die Nutzung von Modifikationen auf eigene Verantwortung; zwingende gesetzliche Haftung bleibt unberührt.</p><h2>9. Änderungen</h2><p>Diese Bedingungen können angepasst werden, wenn sich Funktionen, Downloads, Hosting oder rechtliche Rahmenbedingungen ändern. Stand: <strong>20. September 2026</strong>.</p></section></div></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid section">
+      <div class="footer-brand"><a class="brand footer-logo" href="#mods" data-view-target="mods"><span class="brand-main">GIGARAZORLP</span><span class="brand-sub">STORY MODE MENUS</span></a><p class="footer-copy" data-en="Mods for a better singleplayer experience.<br>Play your story. Your way." data-de="Mods für ein besseres Singleplayer-Erlebnis.<br>Spiel deine Story. Auf deine Art.">Mods for a better singleplayer experience.<br>Play your story. Your way.</p><div class="socials"><a href="#" data-link-key="youtube" aria-label="YouTube">▶</a><a href="#" data-link-key="discord" aria-label="Discord">☁</a></div><div class="social-link-note" data-en="YouTube &amp; Discord are external links only — they are opened only after you click." data-de="YouTube &amp; Discord sind nur externe Links — sie werden erst nach deinem Klick geöffnet.">YouTube &amp; Discord are external links only — they are opened only after you click.</div></div>
+      <div class="footer-links"><strong data-en="Navigation" data-de="Navigation">Navigation</strong><a href="#mods" data-view-target="mods">Mods</a><a href="#rdr2" data-view-target="rdr2">RDR2 Trainer</a><a href="#installation" data-view-target="installation">Installation</a><a href="#faq" data-view-target="faq">FAQ</a><a href="#credits" data-view-target="credits">Credits</a></div>
+      <div class="footer-links"><strong data-en="Legal" data-de="Rechtliches">Legal</strong><a href="#imprint" data-view-target="imprint"><span data-en="Imprint" data-de="Impressum">Imprint</span></a><a href="#privacy" data-view-target="privacy"><span data-en="Privacy Policy" data-de="Datenschutz">Privacy Policy</span></a><a href="#terms" data-view-target="terms"><span data-en="Terms of Use" data-de="Nutzungsbedingungen">Terms of Use</span></a><a href="#credits" data-view-target="credits">AI Artwork</a></div>
+      <div class="handwritten">Thanks for being part<br>of this journey! ♡</div>
+    </div>
+    <div class="footer-bottom section"><span>© 2026 GigarazorLP.</span><span class="footer-offline-note" data-en="Story Mode / Offline only — not for GTA Online or Red Dead Online." data-de="Nur Story Mode / Offline — nicht für GTA Online oder Red Dead Online.">Story Mode / Offline only — not for GTA Online or Red Dead Online.</span><span data-en="Independent fan project." data-de="Unabhängiges Fanprojekt.">Independent fan project.</span></div>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+  /* =====================================================================
+     EDIT LINKS HERE / HIER LINKS EINTRAGEN
+     ---------------------------------------------------------------------
+     This is the ONLY place you need to edit your download/social URLs.
+     Du musst deine Download-/Social-Links NUR HIER ändern.
+
+     Normal Google Drive example:
+     https://drive.google.com/file/d/FILE_ID/view?usp=sharing
+
+     Replace "#" with your real link. Leave "#" if you do not use a slot.
+     ===================================================================== */
+  const SITE_CONFIG = {
+    googleDriveDirectDownload: true,
+
+    links: {
+      // GTA V downloads
+      gigarazorlLegacy:   "https://drive.google.com/file/d/1ZwgTXNUZaNdzIXdWhvD8FypyW_uP3uHp/view?usp=sharing", // GigarazorLP Trainer
+      gigarazorlEnhanced: "https://drive.google.com/file/d/1ZwgTXNUZaNdzIXdWhvD8FypyW_uP3uHp/view?usp=sharing", // GigarazorLP Trainer
+      sodiumLegacy:       "https://drive.google.com/file/d/1d0591fv584pRNaRRuYOtMaRCErgda4l8/view?usp=sharing", // SodiumEngine
+      sodiumEnhanced:     "https://drive.google.com/file/d/1d0591fv584pRNaRRuYOtMaRCErgda4l8/view?usp=sharing", // SodiumEngine
+      pulseoneLegacy:      "https://drive.google.com/file/d/1yJmcBlHOLW8rXlUKOf0egEPoahogvro0/view?usp=drive_link", // PulseOne
+      pulseoneEnhanced:    "https://drive.google.com/file/d/1yJmcBlHOLW8rXlUKOf0egEPoahogvro0/view?usp=drive_link", // PulseOne
+      espGtav:             "https://drive.google.com/file/d/1vhmmL7Qx-yEga0jiAzWdndcU2wyyYTuG/view?usp=drive_link", // ESP / Aimbot Tool
+
+      // Red Dead Redemption 2 downloads
+      sodiumRdr2Main:      "https://drive.google.com/file/d/1faueyqdHUPjZ9Ngmz0IPbxF3q5EicuSi/view?usp=sharing", // SodiumEngine RDR2
+      sodiumRdr2Mirror:    "https://drive.google.com/file/d/1faueyqdHUPjZ9Ngmz0IPbxF3q5EicuSi/view?usp=sharing", // SodiumEngine RDR2
+
+      // Social links (plain external links, no embeds)
+      youtube:             "https://www.youtube.com/@gigarazorlp1911", // YouTube
+      discord:             "https://discord.com/invite/mBzEN5S5Db"  // Discord
+    },
+
+    /* =================================================================
+       EDIT IMPRINT DETAILS HERE / HIER IMPRESSUMSDATEN EINTRAGEN
+       Enter these once; the imprint + privacy contact fill automatically.
+       ================================================================= */
+    owner: {
+      name:    "Alexander Huber",
+      street:  "Spitzhiebelweg 11",
+      city:    "94258 Frauenau",
+      country: "Germany",
+      email:   "gigarazor.bot@web.de"
+    }
+  };
+
+  (() => {
+    'use strict';
+    const qs = (s, root = document) => root.querySelector(s);
+    const qsa = (s, root = document) => [...root.querySelectorAll(s)];
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let currentLang = 'en'; // English is the default language on every fresh load.
+    let currentView = 'mods';
+    let switching = false;
+
+    const normalizeLink = (url) => {
+      if (!url || url === '#') return '#';
+      if (!SITE_CONFIG.googleDriveDirectDownload) return url;
+      try {
+        const parsed = new URL(url, window.location.href);
+        if (parsed.hostname === 'drive.google.com') {
+          const fileMatch = parsed.pathname.match(/\/file\/d\/([^/]+)/);
+          const id = fileMatch?.[1] || parsed.searchParams.get('id');
+          if (id) return `https://drive.google.com/uc?export=download&id=${encodeURIComponent(id)}`;
+        }
+      } catch (_) {}
+      return url;
+    };
+
+    // Fill owner/contact values from the one config block above.
+    qsa('[data-owner]').forEach(el => {
+      const value = SITE_CONFIG.owner[el.dataset.owner];
+      if (value) el.textContent = value;
+    });
+
+    // Apply all configurable download/social links.
+    qsa('[data-link-key]').forEach(link => {
+      const value = normalizeLink(SITE_CONFIG.links[link.dataset.linkKey] || '#');
+      link.href = value;
+      if (value !== '#') {
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer external';
+        link.referrerPolicy = 'no-referrer';
+      }
+    });
+
+    // Harden any other absolute external links.
+    qsa('a[href^="http://"],a[href^="https://"]').forEach(link => {
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer external';
+      link.referrerPolicy = 'no-referrer';
+    });
+
+    const toast = qs('.toast');
+    let toastTimer;
+    const showToast = (message) => {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+    };
+
+    qsa('[data-link-key]').forEach(link => link.addEventListener('click', e => {
+      if (link.getAttribute('href') === '#') {
+        e.preventDefault();
+        const label = link.dataset.download || link.getAttribute('aria-label') || link.dataset.linkKey;
+        showToast(currentLang === 'de' ? `${label}: Download derzeit nicht verfügbar.` : `${label}: download currently unavailable.`);
+      }
+    }));
+
+    const setLanguage = (lang) => {
+      currentLang = lang === 'de' ? 'de' : 'en';
+      document.documentElement.lang = currentLang;
+      qsa('[data-language]').forEach(block => block.hidden = block.dataset.language !== currentLang);
+      qsa('[data-lang-button]').forEach(btn => {
+        const active = btn.dataset.langButton === currentLang;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', String(active));
+      });
+      qsa('[data-en][data-de]').forEach(el => {
+        const val = currentLang === 'de' ? el.dataset.de : el.dataset.en;
+        if (val !== undefined) el.innerHTML = val;
+      });
+      qsa('[data-short-en][data-short-de]').forEach(el => {
+        el.textContent = currentLang === 'de' ? el.dataset.shortDe : el.dataset.shortEn;
+      });
+      document.title = currentLang === 'de' ? 'GigarazorLP – Story Mode Menüs' : 'GigarazorLP – Story Mode Menus';
+      // Make newly revealed language content immediately visible.
+      qsa(`#view-${currentView} .reveal`).forEach(el => el.classList.add('visible'));
+    };
+
+    qsa('[data-lang-button]').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.langButton)));
+
+    const validViews = new Set(['mods','rdr2','installation','faq','credits','imprint','privacy','terms']);
+    const glass = qs('.tab-glass');
+    const markNav = (view) => qsa('.main-nav a[data-view-target]').forEach(a => a.classList.toggle('active', a.dataset.viewTarget === view));
+
+    const showView = (view, {push = true, instant = false} = {}) => {
+      if (!validViews.has(view)) view = 'mods';
+      if (view === currentView && !qs(`#view-${view}`).hidden) {
+        window.scrollTo({top: 0, behavior: reduceMotion ? 'auto' : 'smooth'});
+        return;
+      }
+      if (switching) return;
+      switching = true;
+      const oldView = qs(`#view-${currentView}`);
+      const newView = qs(`#view-${view}`);
+      const finish = () => {
+        if (oldView) oldView.hidden = true;
+        newView.hidden = false;
+        newView.classList.remove('view-enter');
+        void newView.offsetWidth;
+        newView.classList.add('view-enter');
+        currentView = view;
+        markNav(view);
+        setLanguage(currentLang);
+        if (push) history.pushState({view}, '', `#${view}`);
+        window.scrollTo({top: 0, behavior: 'auto'});
+        glass.classList.remove('active');
+        setTimeout(() => { switching = false; }, reduceMotion ? 0 : 220);
+      };
+      if (instant || reduceMotion) return finish();
+      glass.classList.add('active');
+      setTimeout(finish, 180);
+    };
+
+    qsa('[data-view-target]').forEach(link => link.addEventListener('click', e => {
+      e.preventDefault();
+      const menu = qs('.main-nav');
+      menu?.classList.remove('open');
+      qs('.menu-toggle')?.setAttribute('aria-expanded','false');
+      showView(link.dataset.viewTarget);
+    }));
+
+    window.addEventListener('popstate', () => {
+      const view = location.hash.replace('#','');
+      showView(validViews.has(view) ? view : 'mods', {push:false});
+    });
+
+    // Mobile menu
+    const menuButton = qs('.menu-toggle');
+    const nav = qs('.main-nav');
+    menuButton?.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(open));
+    });
+
+    // Neon hover wipe.
+    const wipeSelector = ['.mod-card','.promo-card','.content-card','.legal-card','.faq-page','.button','.outline-button','.offline-pill'].join(',');
+    qsa(wipeSelector).forEach(el => {
+      if (el.querySelector(':scope > .hover-wipe')) return;
+      el.classList.add('wipe-surface');
+      const wipe = document.createElement('span');
+      wipe.className = 'hover-wipe';
+      wipe.setAttribute('aria-hidden','true');
+      el.appendChild(wipe);
+    });
+
+    // Subtle card tilt on desktop.
+    const canHover = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+    if (!reduceMotion && canHover) {
+      qsa('.tilt').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX-r.left)/r.width, y = (e.clientY-r.top)/r.height;
+          card.style.setProperty('--mx', `${x*100}%`);
+          card.style.setProperty('--my', `${y*100}%`);
+          card.style.transform = `translateY(-4px) rotateX(${(0.5-y)*3.2}deg) rotateY(${(x-0.5)*4.2}deg)`;
+        });
+        card.addEventListener('mouseleave', () => card.style.transform = '');
+      });
+    }
+
+    // Start in English. Hash can directly open any tab.
+    setLanguage('en');
+    const initial = location.hash.replace('#','');
+    if (validViews.has(initial) && initial !== 'mods') showView(initial, {push:false, instant:true});
+    else { currentView = 'mods'; markNav('mods'); qs('#view-mods').hidden = false; }
+  })();
+  </script>
+</body>
+</html>
